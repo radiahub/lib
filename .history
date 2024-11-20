@@ -1,0 +1,36 @@
+Lite lib for android Cordova apps
+---------------------------------
+
+Author      : Denis Auguste Patrice <radiahub@gmail.com>
+Framework   : Java 11.0.18 cordova 12.0.0 cordova-android 13.0.0
+Description : Android client applications
+Timestamp   : [2024]-[NOV]-[20] [19]:[49]
+
+[*] SETUP GITHUB REPOSITORY
+
+	[*] Public repository
+	[ ] Private repository
+
+	Create github repository radiahub/lib
+	Setup initial .gitignore using C:\bin\scripts\template.gitignore
+	Commit initial .gitignore as "Initial commit"
+
+[*] DEPLOY GIT VERSION CONTROL
+
+	NB: you may have to restart windows to access the directories
+
+	cd C:\bin\xampp\htdocs\lite
+	Rename C:\bin\xampp\htdocs\lite\lib to C:\bin\xampp\htdocs\lite\lib.src
+	gh repo clone radiahub/lib
+	Rename C:\bin\xampp\htdocs\lite\lib to C:\bin\xampp\htdocs\lite\lib.git
+	Rename C:\bin\xampp\htdocs\lite\lib.src to C:\bin\xampp\htdocs\lite\lib
+	xcopy lib.git lib /s /r /e /v /h /y
+	Delete C:\bin\xampp\htdocs\lite\lib.git
+	Open lib in Visual Code
+	Check GIT accessed properly
+	Initial commit to Github
+	Initial push action
+  Verify data on Github
+
+
+End of file: template.history

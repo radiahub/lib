@@ -1,0 +1,96 @@
+<div id="DIV_CON_[prompt_id]" class="page modal-cover" style="z-index:25015 !important;">
+
+	<div id="DIV_PROMPT_[prompt_id]" class="flex-middle overflow-none" style="height:auto; left:0; width:100%; top:100vh;">
+		<div class="dialog overflow-none radius-small shadow-04" style="height:auto; width: 90%; max-width: 27em;">
+
+			<div class="row header overflow-none" style="height:4.4em; display:block;">
+				<div class="col-3 keep"></div>
+				<div class="col-18 keep fit-height flex-middle h4 bold ellipsis">
+					[title]
+				</div>
+				<div class="col-3 keep"></div>
+			</div>
+
+			<!-- DIV_SUGGESTIONS -->
+			<div class="row margin-l-top" style="padding:0 1.2em 0 1em;">
+				[html_suggestions]
+			</div>
+			<!-- END -->
+
+			<!-- DIV_NORMAL_INPUT -->
+			<div id="DIV_NORMAL_INPUT" class="row margin-l-top" style="height:2.6em; padding:0 1.5em 0 1.5em;" >
+				<div class="col-24">
+					<div class="row">
+						<div class="col-24 keep focusable radius-small flex-left overflow-none">
+							<input id="INP_PROMPT_[prompt_id]" type="text" class="fit-width dark h4" value="" autocomplete="off" style="font-size:1.1rem; -webkit-text-security: [disc]">
+						</div>
+						<!--
+						<div class="col-3 keep fit-height flex-right">
+							<div id="BTN_DEL_PROMPT_[prompt_id]" class="circle flex-middle" style="width:2em; height:2em; cursor: pointer;">
+								<i class="zmdi zmdi-close dark" style="font-size:1.6em;"></i>
+							</div>
+						</div>
+						-->
+					</div>
+				</div>
+			</div>
+			<!-- END -->
+
+			<!-- DIV_CODE_INPUT -->
+			<div id="DIV_CODE_INPUT" class="row margin-xl-top">
+				<div id="DIVCONT_CODE_INPUT" class="relative h4" style="width:[codeWidth]em; height:2.8em; margin:0 auto;">
+				</div>
+				<div style="display:none;">
+					<div id="DIVTPL_CODE_DIGIT">
+						<div id="DIV_CODE_DIGIT_[digit]" class="relative code-digit fit-height float-left flex-middle neutral border-2-px-bottom border-light" style="width: 2.2em;"></div>
+					</div>
+					<div id="DIVTPL_CODE_SEP">
+						<div class="relative fit-height float-left" style="width: 0.5em;"></div>
+					</div>
+					<div id="DIVTPL_CODE_INPUT">
+						<div class="absolute bg-transparent" style="top:0; left:0; width:100%; height:100%;">
+							<input id="INP_PROMPT_[prompt_id]" type="tel" value="" autocomplete="off" maxlength="[digits]" style="background:transparent; color:rgba(0,0,0,0); width:100%; height:100%;">
+						</div>
+					</div>
+				</div>
+				<!--
+				<div id="DIVCONT_CODE_INPUT" class="relative h4" style="width:10.3em; height:2.8em; margin:0 auto;">
+					<div id="DIV_CODE_DIGIT_0" class="relative code-digit fit-height float-left flex-middle neutral border-2-px-bottom border-light" style="width: 2.2em;"></div>
+					<div class="relative fit-height float-left" style="width: 0.5em;"></div>
+					<div id="DIV_CODE_DIGIT_1" class="relative code-digit fit-height float-left flex-middle neutral border-2-px-bottom border-light" style="width: 2.2em;"></div>
+					<div class="relative fit-height float-left" style="width: 0.5em;"></div>
+					<div id="DIV_CODE_DIGIT_2" class="relative code-digit fit-height float-left flex-middle neutral border-2-px-bottom border-light" style="width: 2.2em;"></div>
+					<div class="relative fit-height float-left" style="width: 0.5em;"></div>
+					<div id="DIV_CODE_DIGIT_3" class="relative code-digit fit-height float-left flex-middle neutral border-2-px-bottom border-light" style="width: 2.2em;"></div>
+					<div class="absolute bg-transparent" style="top:0; left:0; width:100%; height:100%;">
+						<input id="INP_PROMPT_[prompt_id]" type="tel" value="" autocomplete="off" maxlength="[digits]" style="background:transparent; color:rgba(0,0,0,0); width:100%; height:100%;">
+					</div>
+				</div>
+				-->
+			</div>
+			<!-- END -->
+
+			<div class="row margin-l-top" style="padding:0.5em 1.5em 0.5em 1.5em;">
+				<div class="col-24 text h4">[text]</div>
+			</div>
+
+			<div class="row flex-middle margin-xl-top" style="height:3.8em; padding:0.5em 1.5em 1em 1.5em;">
+				<div class="fit-width">
+					<div id="BTN_OK_[prompt_id]" class="link rounded float-right h4 bold uppercase">[ok]</div>
+					<div class="relative float-right" style="width: 2em;">&nbsp;</div>
+					<div id="BTN_CANCEL_[prompt_id]" class="link rounded float-right h4 bold uppercase">[cancel]</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div style="display: none;">
+		<!-- DIVTPL_SUGGESTIONS -->
+		<div class="chip prompt_suggestion_[prompt_id] rounded" style="height:1.8em !important;">
+			[suggestion]
+		</div>
+		<!-- END -->
+	</div>
+
+</div>
