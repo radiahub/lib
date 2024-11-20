@@ -29,25 +29,23 @@ plugins/
 .vscode/
 typings/
 
-#Thumbnails created by windows
+# Thumbnails created by windows
 Thumbs.db
 
-#Ignore imported and library files
+# Ignore imported and library files
 import/
 fonts/
 
-#Ignore downloadable documents
+# Ignore downloadable documents
 *.apk
 
-#Ignore external resource documents
+# Ignore external resource documents
 documents/
 resources/
 
-#Ignore external resource files
-
-#Ignore deprecated elements
+# Ignore deprecated elements
 deprecated/
 www.ori/
 
-#Ignore symbolic links
+# Ignore symbolic links
 *.lnk
