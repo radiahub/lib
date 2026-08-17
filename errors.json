@@ -1,0 +1,942 @@
+[
+    {
+        "id": "1000",
+        "text": "SUCCESS",
+        "exposure": "APPLICATION PERFORMING NORMALLY"
+    },
+    {
+        "id": "1001",
+        "text": "SERVICE DATA NOT AVAILABLE OR DATA UPLOAD IN PROGRESS",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1002",
+        "text": "DATABASE CONNECTION NOT INITIALIZED",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1003",
+        "text": "PARAMETER FORMAT NOT RECOGNIZED",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1004",
+        "text": "INCOMPLETE PARAMETER LIST",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1005",
+        "text": "INTERNAL SESSION ERROR",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1006",
+        "text": "INTERNAL QUEUE ACCESS ERROR",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1007",
+        "text": "SYNTAX ERROR OR PARSING ERROR",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1008",
+        "text": "SYNTAX ERROR",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1009",
+        "text": "REFERENCE TO A NON EXISTING ITEM",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1010",
+        "text": "SYSTEM ERROR",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1011",
+        "text": "DATABASE WRITE ERROR",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1012",
+        "text": "DATABASE READ ERROR",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "1013",
+        "text": "INTERFACE WRITE ERROR",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "1014",
+        "text": "INCOMPATIBLE ENVIRONMENT",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1015",
+        "text": "DATABASE ACCESS ERROR",
+        "exposure": "NO ACCESS TO APPLICATION"
+    },
+    {
+        "id": "1016",
+        "text": "PARSE ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1017",
+        "text": "INVALID DATA",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1018",
+        "text": "DEVICE NOT AUTHENTICATED",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1019",
+        "text": "DEVICE NOT ACTIVE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1020",
+        "text": "DUPLICATED ENTRY",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1021",
+        "text": "UNKNOWN COMMAND",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1022",
+        "text": "NOTHING TO DO",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1023",
+        "text": "REFERENCE OUT OF RANGE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1024",
+        "text": "FILE UPLOAD ERROR OR INCOMPLETE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1025",
+        "text": "NO CONFIRMATION ON TERMS OF SERVICE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1026",
+        "text": "INVALID TEMPLATE FORMAT OR TEMPLATE UPLOAD FAILED",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1027",
+        "text": "INVALID TEMPLATE DESCRIPTOR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1028",
+        "text": "INVALID USSD REQUEST",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1029",
+        "text": "INVALID SMSC\/MMSC REQUEST",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1030",
+        "text": "INVALID SYSTEM TERMINAL IDENTIFIER",
+        "exposure": "NO TERMINAL LOG POSSIBLE"
+    },
+    {
+        "id": "1031",
+        "text": "FILE TOO LARGE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1032",
+        "text": "APPLICATION IDENTIFICATION ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1033",
+        "text": "INVALID REQUEST",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1034",
+        "text": "INVALID SESSION USER OR ACCOUNT",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1035",
+        "text": "INTERFACE NOT CONFIGURED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "1036",
+        "text": "INTERFACE NOT READY",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "1037",
+        "text": "DEVICE ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1038",
+        "text": "REQUEST TIMEOUT",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1039",
+        "text": "TRANSACTION NOT AVAILABLE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1040",
+        "text": "ILLEGAL COMMAND",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1041",
+        "text": "INCORRECT SERVER RESPONSE",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1042",
+        "text": "CONNECTION ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1043",
+        "text": "REDIRECTION ERROR OR PROXY ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1044",
+        "text": "METHOD NOT IMPLEMENTED",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1045",
+        "text": "RECORD MARKED FOR DELETION",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "1046",
+        "text": "REQUEST NOT TIMED OUT",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "1047",
+        "text": "REQUEST NOT COMPLETED",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "2001",
+        "text": "WRONG PASSWORD",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2002",
+        "text": "BRUTE FORCE ATTEMPT OR ITEM BLACK-LISTED",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2003",
+        "text": "ACCOUNT IS NOT VALID",
+        "exposure": "NOT ALL APPLICATION FEATURES ACCESSIBLES"
+    },
+    {
+        "id": "2004",
+        "text": "SESSION ERROR",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2005",
+        "text": "SYSTEM ERROR: CANNOT UNLOG SESSION",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2006",
+        "text": "SYSTEM ERROR: CANNOT STORE SESSION",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2007",
+        "text": "INSUFFICIENT RIGHTS",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2008",
+        "text": "INCORRECT VISUAL CODE",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2009",
+        "text": "IDENTIFICATION ERROR",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2010",
+        "text": "ACCESS DENIED",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2011",
+        "text": "USER NOT VALID",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2012",
+        "text": "USER NOT VALID FOR THIS ACCOUNT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2013",
+        "text": "USER NOT GRANTED SYSTEM ADMINISTRATION RIGHTS",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2014",
+        "text": "NOT SYSTEM ADMINISTRATION ACCOUNT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2015",
+        "text": "REFERENCE TO A NON EXISTING ACCOUNT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2016",
+        "text": "SESSION DATA ERROR",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2017",
+        "text": "NO CERTIFICATE OR INVALID CERTIFICATE FOR THIS SERVER",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2018",
+        "text": "CERTIFICATE HAS EXPIRED FOR THIS ACCOUNT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2019",
+        "text": "EMAIL ADDRESS AND IDENTIFICATION DO NOT MATCH",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2020",
+        "text": "INVALID CERTIFICATE VALUE",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2021",
+        "text": "ACCOUNT DOES NOT EXIST",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2022",
+        "text": "PACKAGE DOES NOT EXIST FOR THIS ACCOUNT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2023",
+        "text": "PACKAGE HAS EXPIRED FOR THIS ACCOUNT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2024",
+        "text": "ACCOUNT HAS EXPIRED",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2025",
+        "text": "USER ID ALREADY EXISTS",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "2026",
+        "text": "EMAIL ADDRESS ALREADY IN USE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "2027",
+        "text": "MOBILE NUMBER ALREADY USED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "2028",
+        "text": "SYSTEM ERROR: CANNOT INSTANTIATE SESSION",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2029",
+        "text": "USER NOT VALID FOR THIS APPLICATION",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2030",
+        "text": "USER ALREADY LOGGED-IN",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "2031",
+        "text": "USER NOT VALID FOR THIS ENTITY",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2032",
+        "text": "AUTHENTICATION ERROR",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "2033",
+        "text": "ACTION CANCELED BY USER",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "2034",
+        "text": "VIRTUAL ACCOUNT NOT CREATED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "2035",
+        "text": "REMOTE ACCOUNT NOT CREATED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "2036",
+        "text": "SERVER AUTHENTICATION ERROR",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "3000",
+        "text": "FILE NOT FOUND",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3001",
+        "text": "CANNOT OPEN THE SPECIFIED FILE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3002",
+        "text": "NOT SUPPORTED FILE TYPE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3003",
+        "text": "INCORRECT OR MISSING SERVICE ID",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "3004",
+        "text": "INCORRECT FILE FORMAT",
+        "exposure": "THE ITEM CANNOT BE READ OR DISPLAYED"
+    },
+    {
+        "id": "3005",
+        "text": "INCORRECT FILE DATA OR FILE DATA MISSING",
+        "exposure": "THE ITEM CANNOT BE READ,DISPLAYED,OR UPLOADED"
+    },
+    {
+        "id": "3006",
+        "text": "CANNOT OPEN FILE FOR WRITING",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3007",
+        "text": "CONNECTION ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "3008",
+        "text": "BINDING ERROR",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "3009",
+        "text": "INVALID FILE NAME",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "3010",
+        "text": "ERROR WRITING TO FILE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3011",
+        "text": "CONVERSATION IS NOT INITIALIZED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3012",
+        "text": "CONVERSATION IS BLOCKED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3013",
+        "text": "MAX ALLOWED MESSAGES REACHED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3014",
+        "text": "CONVERSATION BLOCKED OR MAX ALLOWED MESSAGES REACHED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3015",
+        "text": "INCOMPATIBLE FILE TYPE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3016",
+        "text": "INCORRECT OBJECT TYPE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3017",
+        "text": "ERROR READING FILE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3018",
+        "text": "ERROR READING FILE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3019",
+        "text": "ERROR READING FROM URL OR ACCESS ORIGIN ERROR",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "3020",
+        "text": "MESSAGE NOT SENT OR MESSAGE ERROR",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4001",
+        "text": "CONTROL MSISDN NOT DEFINED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4002",
+        "text": "TRANSACTION DENIED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4003",
+        "text": "SERVICE IS INVALID",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4004",
+        "text": "INSUFFICIENT BALANCE",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4005",
+        "text": "INVALID SUBSCRIBER",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4006",
+        "text": "INCORRECT OR MISSING SUBSCRIBER MO TRANSACTION",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "4007",
+        "text": "INVALID CONTENT",
+        "exposure": "APPLICATION ACCESS DENIED"
+    },
+    {
+        "id": "4008",
+        "text": "INVALID OR MISSING TRANSACTION ID",
+        "exposure": "INCORRECT RECONCILIATION BALANCE"
+    },
+    {
+        "id": "4009",
+        "text": "MAXIMAL BALANCE REACHED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4010",
+        "text": "INVALID RELOAD AMOUNT",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4011",
+        "text": "SERVICE ALREADY EXISTS",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "4012",
+        "text": "SERVICE IS BUSY",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "4013",
+        "text": "REQUEST IS INVALID",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "4014",
+        "text": "INVALID AMOUNT",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "5001",
+        "text": "PROCESS NOT STARTED",
+        "exposure": "INCORRECT APPLICATION EXECUTION"
+    },
+    {
+        "id": "5002",
+        "text": "PROCESS START REQUEST FAILED",
+        "exposure": "INCORRECT APPLICATION EXECUTION"
+    },
+    {
+        "id": "5003",
+        "text": "REQUEST NOT COMPLETED",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "5004",
+        "text": "PROCESS DOES NOT RUN AS ROOT",
+        "exposure": "INCORRECT APPLICATION EXECUTION"
+    },
+    {
+        "id": "5005",
+        "text": "SMTP SENDMAIL REQUEST FAILED",
+        "exposure": "INCORRECT APPLICATION EXECUTION"
+    },
+    {
+        "id": "5006",
+        "text": "COMMAND EXECUTION FAILED",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "8000",
+        "text": "DRIVE MOUNT ERROR OR DRIVE DOES NOT EXIST",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "8001",
+        "text": "PATH DOES NOT EXIST",
+        "exposure": "REQUEST NOT PROCESSED, REQUEST DISCARDED"
+    },
+    {
+        "id": "9000",
+        "text": "SUCCESS",
+        "exposure": "APPLICATION PERFORMING NORMALLY"
+    },
+    {
+        "id": "9001",
+        "text": "MSISDN NOT CONFIRMED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9002",
+        "text": "EMAIL NOT CONFIRMED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9003",
+        "text": "KEY VALIDATION ERROR",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9004",
+        "text": "OPERATION NOT ALLOWED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9005",
+        "text": "OPERATION NOT COMPLETED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9006",
+        "text": "EMAIL VALIDATION PENDING GRACE PERIOD",
+        "exposure": "POSSIBLE LIMITED APPLICATION ACCESS"
+    },
+    {
+        "id": "9007",
+        "text": "ITEM VALIDITY HAS EXPIRED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9008",
+        "text": "USER OR ACCOUNT MARKED FOR DELETION",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9009",
+        "text": "UNKNOWN DEVICE TYPE",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9010",
+        "text": "UNKNOWN TARGET DEVICE",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9011",
+        "text": "UNKNOWN TARGET CLUSTER",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9012",
+        "text": "UNKNOWN SERVER",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9013",
+        "text": "NOT CONNECTED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9014",
+        "text": "SERVICE IS NOT STARTED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9015",
+        "text": "MISSING OR INVALID SERVICE CONFIGURATION",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9016",
+        "text": "MISSING OR INVALID PLUGIN CONFIGURATION",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9017",
+        "text": "DATABASE NOT CONFIGURED",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "9018",
+        "text": "INVALID DOCUMENT REFERENCE",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "9019",
+        "text": "EMPTY COLLECTION",
+        "exposure": "REQUEST NOT POSTED, REQUEST DISCARDED"
+    },
+    {
+        "id": "9020",
+        "text": "MULTIPLE QUERY EXECUTION ERROR",
+        "exposure": "REQUEST MAY BE PARTIALLY EXECUTED"
+    },
+    {
+        "id": "9021",
+        "text": "SINGLE QUERY EXECUTION ERROR",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9022",
+        "text": "INVALID CONFIGURATION",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9023",
+        "text": "DECRYPTON ERROR",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9024",
+        "text": "SOCKET NOT INITIALIZED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9025",
+        "text": "SOCKET CONNECTION ERROR",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9100",
+        "text": "SUCCESS",
+        "exposure": "APPLICATION PERFORMING NORMALLY"
+    },
+    {
+        "id": "9101",
+        "text": "INVALID SIGNATURE",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9102",
+        "text": "EMPTY PARTNER ID OR SIGNATURE",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9103",
+        "text": "INVALID PARTNER ID",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9104",
+        "text": "PHONE NO ALREADY REGISTERED",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9105",
+        "text": "INVALID ACCOUNT",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9112",
+        "text": "UPGRADE REQUIRED",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9113",
+        "text": "UPGRADE ALREADY REGISTERED",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9114",
+        "text": "REFERENCE TO NON EXISTING DATA",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9115",
+        "text": "UPDATE FAILED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9116",
+        "text": "UPGRADE FAILED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9117",
+        "text": "SYNC REQUIRED",
+        "exposure": "DATA CONSISTENCY MAY BE AT RISK"
+    },
+    {
+        "id": "9118",
+        "text": "NO PAYMENT SUPPORT",
+        "exposure": "TRANSACTION CANNOT BE SETTLED"
+    },
+    {
+        "id": "9119",
+        "text": "MISSING OR INCORRECT SOURCE OF FUND DEFINITION",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9120",
+        "text": "TRANSACTION ROLLED BACK",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "9121",
+        "text": "CARD IS NOT ACCEPTED",
+        "exposure": "REQUEST NOT EXECUTED"
+    },
+    {
+        "id": "9131",
+        "text": "DATA FORMAT NOT RECOGNIZED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9150",
+        "text": "INTERNAL SERVER ERROR",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9161",
+        "text": "REQUEST IS INVALID OR NOT SUPPORTED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9162",
+        "text": "OTP VERIFICATION FAILED",
+        "exposure": "REQUEST NOT COMPLETED"
+    },
+    {
+        "id": "9163",
+        "text": "OTP VERIFICATION TOO MANY RETRIES",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9164",
+        "text": "INVALID TOKEN",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9165",
+        "text": "INVALID TOKEN",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9166",
+        "text": "TOKEN PREVIOUSLY USED",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9167",
+        "text": "TOKEN HAS EXPIRED",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9168",
+        "text": "NO TOKEN GRANTED",
+        "exposure": "REQUEST DISCARDED"
+    },
+    {
+        "id": "9169",
+        "text": "GRANT REQUEST ERROR",
+        "exposure": "NO TOKEN GRANTED"
+    },
+    {
+        "id": "9992",
+        "text": "REQUEST REJECTED",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9993",
+        "text": "REQUEST FAILED",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9994",
+        "text": "RUNTIME EXCEPTION",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9995",
+        "text": "REQUEST CANCELED BY ISSUER",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9996",
+        "text": "REQUEST TIMED OUT",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9997",
+        "text": "REQUEST DECLINED",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9998",
+        "text": "ERROR",
+        "exposure": "RUNTIME EXCEPTION"
+    },
+    {
+        "id": "9999",
+        "text": "UNLISTED ERROR",
+        "exposure": "UNLISTED ERROR"
+    }
+]
