@@ -1,0 +1,47 @@
+<!-- HTML -->
+<div id="DIVTPL_LIST_WRAPPER" style="display:none;">
+  <div class="list-wrapper fit overflow-y" style="padding:var(--row-padding-horizontal);">
+  </div>
+</div>
+
+<div id="DIVTPL_LIST_ROW" style="display:none;">
+  <div class="list-row fit-width overflow-none wordwrap" rec='[rec]' style="height:fit-content; min-height:var(--row-min-height); padding:var(--row-padding-vertical) 0;">
+    [contHtml]
+  </div>
+</div>
+
+<div id="DIVTPL_LIST_ICON" style="display:none;">
+  <div class="list-icon [icon-class] float-left flex flex-column flex-center flex-middle" clickable="[clickable]" style="width:var(--div-icon-size); height:var(--div-icon-size); padding-top:var(--icon-padding-top);">
+    [icon]
+  </div>
+</div>
+
+<div id="DIVTPL_LIST_CHECKBOX" style="display:none;">
+  <label for="CB[idx]">
+    <div class="list-checkbox float-left flex flex-column flex-center flex-middle" style="width:var(--div-icon-size); height:var(--div-icon-size);">
+      <label class="check">
+        <input id="CB[idx]" type="checkbox">
+        <span class="box"></span>
+      </label>
+    </div>
+  </label>
+</div>
+
+<div id="DIVTPL_LIST_TEXT" style="display:none;">
+  <div class="float-left flex flex-row flex-left flex-middle" style="width:[width]; height:fit-content; min-height:var(--div-icon-size);">
+    <div style="width:100%;" style="padding-right:var(--row-padding-horizontal);">
+      <!--line_1-->
+      <div class="[ellipsis]" style="font-size:var(--line-1-font-size);">
+        [line_1]
+      </div>
+      <!--end-->
+      <!--line_2-->
+      <div style="padding:0.25em 0; font-size:var(--line-2-font-size); text-align:[text-align];">
+        [line_2]
+      </div>
+      <!--end-->
+    </div>
+  </div>
+</div>
+
+

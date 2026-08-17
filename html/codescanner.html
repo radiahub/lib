@@ -1,11 +1,11 @@
-<div id="camera" class="page fit bg-black overflow-none">
+<div id="codescanner" class="page fit bg-black overflow-none">
     <div class="fit-width" style="height:56px;">
         <div class="float-left fit-height flex flex-row flex-left flex-middle">
             <div id="BTN_LIGHT" class="flex flex-column flex-center flex-middle" style="width:30px; height:30px; background-color:#303030; border-radius:50%;">
                 <span id="SPAN_LIGHT" class="material-icons" style="font-size:20px;">flash_on</span>
             </div>
             <div id="BTN_SOUND" class="flex flex-column flex-center flex-middle" style="width:30px; height:30px; background-color:#303030; border-radius:50%; margin-left:16px;">
-                <span id="SPAN_SOUND" class="material-icons" style="font-size:20x;">volume_up</span>
+                <span id="SPAN_SOUND" class="material-icons" style="font-size:20x;">volume_off</span>
             </div>
         </div>
         <div class="float-right fit-height flex flex-row flex-right flex-middle">
@@ -20,24 +20,50 @@
             </div>
         </div>
     </div>
+    
     <div style="height:70%">
-        <div class="absolute fit" style="padding:20px; z-index:1;">
+        <div class="absolute" style="width:100%; aspect-ratio:1; padding:20px; z-index:1;">
             <div class="fit cameraFrame flex flex-column flex-center flex-middle" style="border-color:#E0E0E0;">
                 <div class="cameraTarget" style="width:50px; border-color:#C0C0C0"></div>
             </div>
         </div>
-        <div class="absolute fit">
+        <div class="absolute overflow-none" style="width:100%; aspect-ratio:1;">
             <video id="video" style="width:100%; height:100%; object-fit:cover;" autoplay playsinline></video>
         </div>
+        <div class="absolute flex flex-column flex-center flex-middle" style="top:100vw; width:100%; height:5px; padding-top:1px;">
+            <div style="width:100%; margin:0 auto; background-color:#404040; height:4px; border-radius:0px; overflow:hidden;">
+                <div id="DIV_TIMER_CURSOR" style="width:0%; background-color:#E0E0E0; height:4px; border-radius:0px;"></div>
+            </div>
+        </div>
+        <!--
+        <video id="video" style="width:100%; height:100%; object-fit:cover;" autoplay playsinline></video>
+        -->
     </div>
+    
+    <!--
     <div class="flex flex-column flex-center flex-middle" style="height:calc(30% - 60px);">
         <div>
         <div class="fit-width h5 flex flex-row flex-center flex-middle fg-yellow">Photo</div>
             <div class="fit-width h5 flex flex-row flex-center flex-middle" style="margin-top:20px;">
-                <div id="BTN_SNAP" style="margin:0 10px; width:50px; height:50px; background-color:#303030; border-radius:50%; padding:7px;">
-                    <div class="fit circle" style="background-color:#E0E0E0;"></div>
+                <div id="BTN_SNAP" style="margin:0 10px; width:50px; height:50px; background-color:#202020; border-radius:50%; padding:7px;">
+                    <div class="fit circle" style="background-color:#606060;"></div>
                 </div>
             </div>
         </div>
     </div>
+    -->
+    <!--
+    <div class="flex flex-column flex-center flex-middle" style="height:12px;">
+        <div style="width:100%; margin:0 auto; background-color:#303030; height:4px; border-radius:0px; overflow:hidden;">
+            <div id="DIV_TIMER_CURSOR" style="width:0%; background-color:#D0D0D0; height:4px; border-radius:0px;"></div>
+        </div>
+    </div>
+    -->
+    <!--
+    <div class="absolute fit flex flex-column flex-center flex-middle" style="top:56px; bottom:56px; height:calc(100% - 112px); padding-bottom:48px;">
+        <div class="overflow-none" style="width:100%; aspect-ratio:1;">
+            <video id="video" style="width:100%; height:100%; object-fit:cover;" autoplay playsinline></video>
+        </div>
+    </div>
+    -->
 </div>
