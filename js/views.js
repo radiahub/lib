@@ -1,0 +1,407 @@
+// ============================================================================
+// Module      : views.js
+// Version     : 1.0
+//
+// Author      : Denis Patrice <denispatrice@yahoo.com>
+// Copyright   : Copyright(c) Denis Patrice Dipl.-Ing. 2010-2025
+//               All rights reserved
+//
+// Application : General
+// Description : Implements view class
+//
+// Date+Time of change   By     Description
+// --------------------- ------ ----------------------------------------------
+// 20-Jan-25 00:00 WIT   Denis  Deployment V. 2025 "Raymond Chandler"
+//
+// ============================================================================
+
+// ****************************************************************************
+// ****************************************************************************
+//
+// DOM UTILS
+//
+// ****************************************************************************
+// ****************************************************************************
+
+const view_all = function() {
+    //console.info(`IN view_all()`);
+    result = [];
+    
+    jQuery(".view").each(function(n,elt) {
+        let id = jQuery(elt).attr("id");
+        //console.log(id);
+        result.push(id);
+    });
+    
+    return result;
+};
+
+const view_on_top = function() {
+    //console.info(`IN view_on_top()`);
+    let views = view_all();
+    if (views.length > 0) {
+        for (let i = views.length - 1; i >= 0; i--) {
+            if (!jQuery(`#${views[i]}`).hasClass('hidden')) {
+                return views[i];
+            }
+        }
+        return "";
+    }
+    else {
+        return "";
+    }
+};
+
+const bring_to_front = function(view_id) {
+    //console.info(`IN bring_to_front() view_id='${view_id}'`);
+    const views = view_all();
+    for (let i = views.length - 1; i >= 0; i--) {
+        if (views[i] === view_id) {
+            jQuery(`#${view_id}`).removeClass('hidden');
+            jQuery(`#${view_id}`).show();
+            break;
+        }
+        else {
+            let obj = object(views[i]);
+            if (obj) { obj.remove(); }
+        }
+    }
+};
+
+const dump_views = function() {
+    let viewTop = view_on_top();
+    let result = [];
+    let views = view_all();
+    return {
+        top: viewTop,
+        all: views
+    };
+};
+
+
+// ****************************************************************************
+// ****************************************************************************
+//
+// VIEWS RENDERING
+//
+// ****************************************************************************
+// ****************************************************************************
+
+/*
+ * UI view renderer
+ *
+ */
+const render = function(view_id) {
+    console.info(`IN render() view_id='${view_id}'`);
+    let obj = object(view_id);
+    if (obj) {
+        if (DOMExists(view_id)) {
+            bring_to_front(view_id);
+        }
+        else {
+            obj.show();
+        }
+    }
+    else {
+        console.error(`no such object: '${view_id}'`);
+    }
+};
+
+/*
+ * Open a view
+ *
+ */
+const open = function(view_id, options = {}) {
+    console.info(`IN open() view_id='${view_id}'`);
+    const obj = object(view_id);
+    if (obj) {
+        obj.args(options);
+        delay(0).then(()=>{ render(view_id); });
+    }
+    else {
+        console.error(`no such object: '${view_id}'`);
+    }
+};
+
+/*
+ * Open a view as modal dialog
+ * Uses Promise-based async interactive  API
+ *
+ */
+const exec = function(view_id, options = {}) {
+    return new Promise((resolve)=>{
+        console.info(`IN exec() view_id='${view_id}'`);
+        
+        const onsuccess = function(value) {
+            delay(0).then(()=>{ resolve(value); });
+        };
+        
+        const onfailed = function() {
+            delay(0).then(()=>{ resolve(false); });
+        };
+        
+        const obj = object(view_id);
+        if (obj) {
+            if (!obj.UIExists()) {
+                obj.reset(onsuccess, onfailed, options);
+                delay(0).then(()=>{ obj.show(); });
+            }
+            else {
+                console.error(`object '${view_id}' already on UI`);
+                onfailed();
+            }
+        }
+        else {
+            console.error(`no such object: '${view_id}'`);
+            onfailed();
+        }
+        
+    });
+};
+
+
+// ****************************************************************************
+// ****************************************************************************
+//
+// CLASS "VIEW" IMPLEMENTATION
+//
+// ****************************************************************************
+// ****************************************************************************
+
+const viewHtml = `
+<div id="[view_id]" class="view bg-transparent overflow-none" style="position:absolute; top:0; left:0; width:100%; height:100%;">
+[html]
+</div>
+`;
+
+class view {
+
+    // ************************************************************************
+    // ************************************************************************
+    //
+    // INITIALIZATION
+    //
+    // ************************************************************************
+    // ************************************************************************
+
+    constructor(view_id, contentHTML = "", contentURI = "", onsuccess = null, onfailed = null) {
+      this.view_id = view_id;
+      this.contentHTML = contentHTML;
+      this.contentURI  = contentURI ;
+      this.onsuccess   = onsuccess  ;
+      this.onfailed    = onfailed   ;
+      this.options = {};
+        this.form = (typeof form !== "undefined") ? new form(`view_id`) : null;
+    }
+
+    args(options = {}) {
+        for (let i in options) { 
+            this.options[i] = options[i]; 
+        }
+    }
+    
+    reset(onsuccess = null, onfailed = null, options = {}) {
+        if (typeof onsuccess === "function") {
+            this.onsuccess = onsuccess;
+        }
+        if (typeof onfailed === "function") {
+            this.onfailed = onfailed;       
+        }
+        this.args(options);
+    }
+
+
+    // ************************************************************************
+    // ************************************************************************
+    //
+    // RUNTIME
+    //
+    // ************************************************************************
+    // ************************************************************************
+
+    // Called by UI support to trigger positive
+    // return value to caller before close
+    // Overwrite: rarely
+    //
+    success(value = true) {
+        if (typeof this.onsuccess === "function") {
+          this.onsuccess(value);
+        }
+        this.remove();
+    }
+
+    // Called by UI support to trigger negative
+    // return value to caller before close
+    // Overwrite: rarely
+    //
+    failed() {
+        if (typeof this.onfailed === "function") {
+          this.onfailed();
+        }
+        this.remove();
+    }
+
+
+    // ************************************************************************
+    // ************************************************************************
+    //
+    // EVENTS
+    //
+    // ************************************************************************
+    // ************************************************************************
+
+    // Triggered after the theme was changed
+    // overwrite: sometimes
+    //
+    onthemechanged() {
+        //console.log(`IN view.onthemechanged('${this.view_id}')`);
+        // Do something meaningful with the view layout
+        //
+    }
+
+    // Triggered after the viewport was resized
+    // overwrite: sometimes
+    //
+    onviewportresize() {
+        //console.log(`IN view.onviewportresize('${this.view_id}')`);
+        // Do something meaningful with the view layout
+        //
+    }
+
+    // Triggered after the hardware back button was pressed
+    // overwrite: sometimes
+    //
+    onbackbutton() {
+        //console.log(`IN view.onbackbutton() view_id='${this.view_id}'`);
+        this.failed();
+    }
+
+
+    // ************************************************************************
+    // ************************************************************************
+    //
+    // UI
+    //
+    // ************************************************************************
+    // ************************************************************************
+    
+    // Return true if the view is positioned on UI and visible
+    // overwrite: as good as never
+    //
+    visible() {
+        console.log(`IN view.visible() view_id='${this.view_id}'`);
+        return jQuery(`#${this.view_id}`).is(":visible");
+    }
+    
+    // Removes the displayed view from UI
+    // overwrite: rarely
+    //
+    remove() {
+        console.log(`IN view.remove() view_id='${this.view_id}'`);
+        jQuery(`#${this.view_id}`).remove();
+        events.unreg('themechanged',  `${this.view_id}.onthemechanged`);
+        events.unreg('viewportresize',`${this.view_id}.onviewportresize`);
+        if (this.form) {
+            this.form.remove();
+        }
+    }
+    
+    // Hide the displayed view
+    // overwrite: rarely
+    //
+    hide() {
+        console.log(`IN view.hide() view_id='${this.view_id}'`);
+        jQuery(`#${this.view_id}`).removeClass('hidden').addClass('hidden');
+    }
+    
+    // Tweak the loaded UI HTML buffer
+    // Overwrite: often
+    //
+    onload(buffer) {
+        //console.log(`IN view.onload() view_id='${this.view_id}'`);
+        if (strlen(buffer) > 0) {
+            // Do something meaningful
+            // to alter the raw buffer
+            //
+        }
+        return buffer;
+    }
+    
+    // Load UI HTML buffer
+    // Overwrite: sometimes
+    //
+    load() {
+        //console.log(`IN view.load() view_id='${this.view_id}'`);
+        let that = this;
+        return new Promise((resolve)=>{
+            if (strlen(that.contentHTML) > 0) {
+                const buffer = that.contentHTML;
+                resolve(that.onload(buffer));
+            }
+            else if (strlen(that.contentURI) > 0) {
+                let uri = this.contentURI;
+                
+                const terminate = function(uri) {
+                    fread(uri).then((buffer)=>{
+                        if (buffer) {
+                            that.options.contentHTML = buffer;
+                            resolve(that.onload(buffer));
+                        }
+                        else {
+                            resolve("");
+                        }
+                    });
+                };
+                
+                fileExists(uri).then((result)=>{
+                    if (result) {
+                        terminate(uri);
+                    }
+                    else if (globalizedFileUri) {
+                        terminate(globalizedFileUri(uri));
+                    }
+                    else {
+                        resolve("");
+                    }
+                });
+            }
+            else {
+                resolve("");
+            }
+        });
+    }
+    
+    // Initialize the page data and interactivity when the page is displayed
+    // overwrite: most of the time
+    //
+    onshow() {
+        //console.log(`IN view.onshow() view_id='${this.view_id}'`);
+        this.onthemechanged();
+        events.reg(`themechanged`, `${this.view_id}.onthemechanged`, this.onthemechanged);
+        this.onviewportresize();
+        events.reg(`viewportresize`, `${this.view_id}.onviewportresize`, this.onviewportresize);
+        // Do something useful here
+        //
+    }
+    
+    // Building the view on UI
+    // overwrite: rarely
+    //
+    show() {
+        //console.log(`IN view.show() view_id='${this.view_id}'`);
+        let that = this;
+        this.load().then((buffer)=>{
+            if (strlen(buffer) > 0) {
+                let contHtml = str_replace("[view_id]", that.view_id, viewHtml);
+                contHtml = str_replace("[html]", buffer, contHtml);
+                jQuery(document.body).append(contHtml);
+            }
+            delay(0).then(()=>{ that.onshow(); });
+        });
+    }
+
+}
+
+
+// End of file: views.js
+// ============================================================================
