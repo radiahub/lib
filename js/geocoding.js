@@ -15,7 +15,7 @@
 //
 // ============================================================================
 
-const MAPBOX_TOKEN      = 'pk.eyJ1IjoicmFkaWFodWIiLCJhIjoiY201Z2RubzhiMDRyczJ2czR4aGowN2pwNyJ9.gyphW7zZdcov_ZNGfw0edA';
+const MAPBOX_TOKEN      = 'pk.eyJ1Ij...';
 const DEFAULT_LONGITUDE = 106.816666; // Default to Jakarta
 const DEFAULT_LATITUDE  = -6.200000;
 const DEFAULT_POSITION  = [DEFAULT_LONGITUDE,DEFAULT_LATITUDE];
