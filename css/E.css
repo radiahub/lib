@@ -1,0 +1,27 @@
+.echoselected { background-color:#303040; }
+
+:root {
+    --e-border: #606060;
+    --e-active: #3CE2D4;
+}
+
+.e-table-container { 
+    overflow-x: auto; 
+}
+
+.e-table { 
+    display         : block; 
+    overflow-x      : auto; 
+    border-collapse : collapse;
+    white-space     : nowrap;
+}
+
+table.e-table td {
+    border:1px solid var(--e-border);
+    font-family:monospace;
+}
+
+table.e-table tr.active {
+    color: var(--e-active) !important;
+}
+

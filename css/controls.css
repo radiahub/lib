@@ -1,0 +1,565 @@
+/* ************************************************************************ */
+/*
+Module     :controls.css
+Version    :1.0R0.0
+
+Author    : Denis Patrice <denispatrice@yahoo.com>
+Copyright : Copyright (c) Denis Patrice Dipl.-Ing. 2010, 2017
+All rights reserved
+
+Application: UI
+Description: Static controls
+
+Date+Time of change   By     Description
+--------------------- ------ ----------------------------------------------
+31-Jan-26 00:00 WIT   Denis  Deployment V. 2026 "Leo Malet"
+
+/* ************************************************************************ */
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* LAYOUT                                                                   */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font-family); 
+  font-weight: var(--font-weight-normal);
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-color: var(--color-surface) var(--color-background); scrollbar-width: thin; 
+}
+
+*:focus { 
+  outline-style:none !important; outline-width:0px; 
+}
+
+html, body {
+  position:fixed; width:100%; height:100%; margin:0; padding:0; overflow:hidden;
+  font-size: var(--font-rem-size);
+  line-height: var(--line-height-normal); 
+  letter-spacing: var(--letter-spacing-normal);
+  overflow-y:auto; -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none !important;
+  touch-action: manipulation;
+}
+
+.monospace { font-family:monospace; font-size:1.0em; }
+
+@media screen and (max-width:768px) {
+    .show-s         { display: block; }
+    .hide-s         { display: none;  }
+
+    .responsive,
+    .expand-x-s     { width:100% !important; }        /* 1 column  */
+
+    .responsive-12  { width:49.9999% !important;    } /* 2 columns */
+    .responsive-8   { width:33.3333333% !important; } /* 3 columns */
+    .responsive-6   { width:24.9999% !important;    } /* 4 columns */
+
+    .expand-y-s     { height:100%; }
+    .no-border-s    { border:0;    }
+    .no-padding-s   { padding:0;   }
+    .overflow-x-s   { overflow-x:auto; }
+    .overflow-y-s   { overflow-y:auto; }
+}
+
+@media screen and (min-width:769px) {
+    .show-l         { display: block; }
+    .hide-l         { display: none;  }
+    
+    .expand-x-l     { width: 100%  }
+    
+    .expand-y-l     { height:100%; }
+    .no-border-l    { border:0;    }
+    .no-padding-l   { padding:0;   }
+    .overflow-x-l   { overflow-x:auto; }
+    .overflow-y-l   { overflow-y:auto; }  
+}
+
+/*
+ * RELATIVE ELEMENTS
+ *
+ */
+.drawer {
+    position   : absolute; 
+    transition : transform var(--duration-normal) var(--ease-default);
+}
+
+.drawer-left {
+    top:0; left:-100%; width:100%; height:100%;
+}
+
+.drawer-left.open {
+    transform : translateX(100%);
+} 
+
+.drawer-right {
+    top:0px; left:100%; width:100%; height:100%;
+}
+
+.drawer-right.open {
+    transform: translateX(-100%);
+} 
+
+.drawer-top {
+    top:-100%; left:0px; width:100%; height:100%; 
+}
+
+.drawer-top.open {
+    transform: translateY(100%);
+} 
+
+.drawer-bottom {
+    top:100%; left:0px; width:100%; height:100%;
+}
+
+.drawer-bottom.open {
+    transform: translateY(-100%);
+} 
+
+.keyboard-sticky {
+    position:absolute; left:0; width:100%; height:fit-content; bottom:0;
+    -webkit-transition: var(--duration-normal); transition: var(--duration-normal);	
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* EFFECTS                                                                  */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+span.ripple {
+    position:absolute;
+    border-radius:50%;
+    transform:scale(0);
+    animation:ripple var(--animation-normal) linear;
+    background-color:var(--color-ripple);
+}
+
+@keyframes ripple {
+    to {
+        transform:scale(4);
+        opacity:0;
+    }
+}
+
+input[type="password"]
+{
+  -webkit-text-security: disc;
+}
+
+.muted, .disabled {
+    color: var(--color-primary-muted);
+    background: transparent;
+    border-color: var(--color-primary-muted);
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* BUTTONS                                                                  */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.link     { cursor:pointer; }
+
+a:link    { color:var(--color-accent); text-decoration:none; cursor:pointer; }
+a:visited { color:var(--color-accent); text-decoration:none; cursor:pointer; }
+a:hover   { color:var(--color-accent); text-decoration:underline; cursor:pointer; }
+a:active  { color:var(--color-accent); text-decoration:underline; cursor:pointer; }
+
+span.ripple { 
+    color:var(--color-accent);
+    text-decoration:underline; 
+    cursor:pointer; 
+}
+
+tr.link {
+    color:var(--color-accent); text-decoration:none; cursor:pointer;
+}
+
+tr.link:hover { 
+    text-decoration:underline;
+}
+
+div.button {
+    width:fit-content; padding:var(--space-small) var(--space-large); height:auto; overflow:hidden;
+    display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:center; align-items:center; align-content:center;
+    background-color:var(--color-surface-alt);
+    color:var(--color-primary-strong);
+    border:1px solid var(--color-border);
+    cursor:pointer;
+}
+
+div.button.primary { 
+    background-color:var(--color-accent); 
+    color:var(color-primary-inverse); 
+    border:0; 
+}
+
+div.button.secondary {
+    background-color:var(--color-surface-inverse);
+    color:var(color-primary-inverse);
+    border:0;
+}
+
+div.button.success {
+    background-color:var(--color-success);
+    color:var(color-callout-primary);
+    border:0;
+}
+
+div.button.warning {
+    background-color:var(--color-warning);
+    color:var(color-callout-primary);
+    border:0;
+}
+
+div.button.error {
+    background-color:var(--color-error);
+    color:var(color-callout-primary);
+    border:0;
+}
+
+div.button.info {
+    background-color:var(--color-info);
+    color:var(color-callout-primary);
+    border:0;
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* TOASTS                                                            */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+/* Container for stacking notifications */
+#toast-container-top,
+#toast-container-bottom {
+    position: fixed; left: 20px; right: 20px; margin: 0 auto;
+    flex-direction: column; gap: 10px;
+    z-index: var(--z-dialog-tool);
+}
+
+#toast-container-top    { top: 10px; }
+#toast-container-bottom { bottom: 20px; }
+
+/* Individual Toast Box */
+.toast {
+    min-width: 250px;
+    margin-top: 0.6rem;
+    padding: 1.0rem;
+    border-radius : var(--radius-tiny);
+    font-family: sans-serif; font-size: 0.8rem; font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex; justify-content: space-between; align-items: center;
+    animation: slideIn var(--animation-fast) ease-out forwards;
+    cursor: pointer;
+}
+
+/* Contextual Variants */
+.toast.success { background-color:var(--color-success); color: var(--color-callout-primary); }
+.toast.warning { background-color:var(--color-warning); color: var(--color-callout-primary); }
+.toast.error   { background-color:var(--color-error); color: var(--color-callout-primary); }
+.toast.info    { background-color:var(--color-info); color: var(--color-callout-primary); }
+
+/* Dismiss / Closing State */
+.toast.hide    { animation: fadeOut var(--animation-normal) ease-in forwards; }
+
+/* Left side icon / image */
+.toast-image   { height: 32px; opacity: 1; }
+
+/* Multiline message container */
+.toast-message { padding:0 5px; color: var(--color-callout-primary); }
+
+/* Close Button */
+.toast-close {
+    margin-left: 10px; height: 28px; width: 28px;
+    background: none; opacity: 1.0;
+    color: var(--color-callout-primary);
+    border: 1px solid var(--color-callout-primary) !important; border-radius: var(--radius-tiny);
+    font-size: 24px; color: currentColor;
+    cursor: pointer;
+}
+
+/* Keyframe Animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* OVERLAYS                                                            */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.overlay        { position:fixed; top:0; left:0; width:100%; height:100%; background:transparent; }
+.overlay-dimmed,
+.overlay.dimmed { background-color: rgba(0,0,0,0.5); }
+
+.menu {
+    width:fit-content; max-width:100%; height:fit-content;
+    background-color: var(--color-surface); color: var(--color-primary-strong);
+    padding:var(--space-medium) 0; border:1px solid var(--color-divider);
+    box-shadow:var(--box-shadow-small);
+}
+
+.dialog { 
+    width:92%; max-width:480px; height:fit-content;
+    padding:1.25em 1.5em 1.0em 1.5em; 
+    background-color: var(--color-surface); 
+}
+
+.dialog .menu {
+    width: 100%; height: fit-content;
+}
+
+.menu .menu-item {
+    min-height: 2.0em; width: 100%;
+    color: var(--color-primary-strong);
+}
+
+.menu .menu-item.divider { 
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.menu .menu-item.disabled { 
+    color: var(--color-primary-muted);
+}
+
+.menu .title { 
+    margin-top:1.2em; margin-bottom:0.5em;
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+    text-transform :uppercase;
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* SPINNERS                                                                 */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+/*
+SPINNER
+<div style="font-size:var(--font-size-xl); border-color:var(--color-accent);">
+    <div class="spinner"></div>
+</div>
+*/
+
+@keyframes spinner {
+    to {transform:rotate(360deg);}
+}
+
+.spinner {
+    width             : 1.0em;
+    height            : 1.0em;
+    background        : transparent;
+}
+
+.spinner:after {
+    content           : '';
+    position          : absolute;
+    top               : 0;
+    left              : 0;
+    width             : 0.7em;
+    height            : 0.7em;
+    border            : 0.15em solid; 
+    border-color      : inherit;
+    border-top-color  : transparent;
+    border-radius     : 50%;
+    animation         : spinner .8s linear infinite;
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* TEMPLATED ELEMENTS                                                       */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+/*
+INPUT
+*/
+div .focusable {
+    border:1px solid var(--color-border); border-radius:var(--radius-small); 
+    padding:var(--space-medium);
+}
+
+div .focusable:focus-within {
+    border:1px solid var(--color-focus);
+}
+
+div.ui-container .notice-label,
+div.ui-container .notice-optional {
+    font-size : var(--font-size-xs);
+    color : var(--color-primary-muted);
+}
+
+div.ui-container .notice-required {
+    font-size : var(--font-size-small);
+    color : var(--color-error);
+}
+
+div.ui-container:focus-within .notice-label,
+div.ui-container:focus-within .notice-optional {
+    color : var(--color-accent);
+}
+
+div.ui-container:focus-within .focusable { 
+    border : 1px solid var(--color-accent); 
+}
+
+div.ui-container:focus-within .notice-error {
+    display : none;
+}
+
+div.ui-container.ui-error .notice-label,
+div.ui-container.ui-error .notice-optional {
+    color : var(--color-error);
+}
+
+div.ui-container.ui-error .focusable {
+    border : 1px solid var(--color-error); 
+}
+
+
+input::-webkit-outer-spin-button, 
+input::-webkit-inner-spin-button { 
+    -webkit-appearance: none; margin: 0; 
+} 
+
+/* Firefox */ 
+input[type=number] { -moz-appearance: textfield; }
+
+input.ui-edit {
+    width          : 100%;
+    font-size      : var(--font-size-medium);
+    line-height    : var(--line-height-xl);
+    padding        : 0 var(--space-xs);
+    border         : 0;
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* CHARTS                                                                 */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --border-chart-grid : #D9DCE0;
+        --fg-chart-grid     : #202124;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --border-chart-grid : #434746;
+        --fg-chart-grid     : #F0F0F0;
+    }
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* INLINE DOCUMENTS                                                         */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --table-document-background      : #FFFFFF;
+        --table-document-background-odd  : #F0F0F0;
+        --table-document-background-even : #FFFFFF;
+        --table-document-border          : #D9DCE0;
+        --table-document-foreground      : #202020;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --table-document-background      : #202020;
+        --table-document-background-odd  : #202020;
+        --table-document-background-even : #101010;
+        --table-document-border          : #434746;
+        --table-document-foreground      : #D0D0D0;
+    }
+}
+
+div.document table { background-color:var(--table-document-background); color:var(--table-document-foreground); }
+div.document table th,
+div.document table td {
+  padding: var(--space-xs) !important;
+}
+div.document table tr:nth-child(odd) {
+  background-color:var(--table-document-background-odd); color:var(--table-document-foreground);
+}
+div.document table tr:nth-child(even) {
+  background-color:var(--table-document-background-even); color:var(--table-document-foreground);
+}
+
+div.document pre             { font-family:monospace !important; }
+div.document code            { font-family:monospace !important; font-size:14px !important; }
+div.document code span       { font-family:monospace !important; font-size:14px !important; }
+
+div.document span.link       { color:var(--color-accent); text-decoration:none; font-weight:600;  cursor:pointer; }
+div.document span.link:hover { color:var(--color-accent); text-decoration:underline; font-weight:600; cursor:pointer; }
+
+div.document tr.link         { color:var(--color-accent); text-decoration:none; font-weight:600; cursor:pointer; }
+div.document tr.link:hover   { color:var(--color-accent); text-decoration:underline; font-weight:600; cursor:pointer; }
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* Import libraries                                                         */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+pre code.hljs { word-wrap:break-word; width:fit-content; }
+
+
+
+
+/* End of file: controls.css
+/* ************************************************************************ */

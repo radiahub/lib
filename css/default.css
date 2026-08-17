@@ -1,0 +1,335 @@
+/* ************************************************************************ */
+/*
+Module     :default.css
+Version    :4.0R0.0
+
+Author    : Denis Patrice <denispatrice@yahoo.com>
+Copyright : Copyright (c) Denis Patrice Dipl.-Ing. 2010, 2017
+All rights reserved
+
+Application: General
+Description: Default styles
+
+Date+Time of change   By     Description
+--------------------- ------ ----------------------------------------------
+04-Jun-25 00:00 WIT   Denis  Deployment V. 2025 "Raymond Chandler"
+
+/* ************************************************************************ */
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*
+/* Typography
+/*
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.italic      { font-style     : italic; }
+.uppercase   { text-transform : uppercase; }
+.underline   { text-decoration: underline; }
+.linethrough { text-decoration: line-through; }
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*
+/* Alignment
+/*
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.ellipsis { 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    	white-space: nowrap;
+}
+
+.right-ellipsis,
+.truncate-left { 
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    direction:rtl;
+    text-align:left;
+}
+
+.wordwrap { 
+    overflow: hidden;
+    white-space: normal !important;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.text-center  { text-align:center;  }
+.text-left    { text-align:left;    }
+.text-right   { text-align:right;   }
+.text-justify { text-align:justify; }
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* PAGE LAYOUT                                                              */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+* {
+  box-sizing: border-box;
+}
+
+div                  { position: relative; width: auto; }
+div::after           { content : ""; display : block; clear : both; }
+.absolute            { position: absolute; }
+.fixed               { position: fixed; }
+
+span                 { display: inline-block; }
+
+.page                { position:absolute; width:100%; height:100%; left:0px; top:0px; }
+.page-docking-top    { position:absolute; width:100%; left:0px; top:0px; }
+.page-docking-bottom { position:absolute; width:100%; left:0px; bottom:0px; }
+
+.fit                 { width : 100%; height:100%; }
+.fit-width           { width : 100%; }
+.fit-height          { height: 100%; }
+
+.squareScreenCenter  {}
+
+@media (orientation:landscape) {
+    .squareScreenCenter { width:100vh; height:100vh; margin:0 auto; }
+}
+@media (orientation:portrait) {
+    .squareScreenCenter { width:100vw; height:100vw; margin:0; position:absolute; top:50%; -ms-transform:translateY(-50%); transform:translateY(-50%); }
+}
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* LAYERS                                                                   */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.modal-cover              { background:rgba(0, 0, 0, 0.4); cursor:default; }
+.modal-cover.transparent  { background:transparent; cursor:default; }
+.hidden                   { display: none; }
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* LAYOUT                                                                   */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.row                      { width:100%; clear:both; }
+
+.col-24                   { width:100%;        }
+.col-23                   { width:95.8333333%; }
+.col-22                   { width:91.6666666%; }
+.col-21                   { width:87.4999%;    }
+.col-20                   { width:83.3333333%; }
+.col-19                   { width:79.1666666%; }
+.col-18                   { width:74.9999%;    }
+.col-17                   { width:70.8333333%; }
+.col-16                   { width:66.6666666%; }
+.col-15                   { width:62.4999%;    }
+.col-14                   { width:58.3333333%; }
+.col-13                   { width:54.1666666%; }
+.col-12                   { width:49.9999%;    }
+.col-11                   { width:45.8333333%; }
+.col-10                   { width:41.6666666%; }
+.col-9                    { width:37.4999%;    }
+.col-8                    { width:33.3333333%; }
+.col-7                    { width:29.1666666%; }
+.col-6                    { width:24.9999%;    }
+.col-5                    { width:20.8333333%; }
+.col-5-4                  { width:80%;         }
+.col-5-5                  { width:20%;         }
+.col-4                    { width:16.6666666%; }
+.col-3                    { width:12.4999%;    }
+.col-2                    { width:8.33333333%; }
+.col-1                    { width:4.16666666%; }
+.col-auto                 { width:auto; }
+.col-width-set            { min-width:1px; }
+.col-0                    { width:0; display:none; }
+
+[class*="col-"]           { position:relative; float:left; }
+[class*="col-"]::after    { display:block; min-height:1px; content:""; }
+
+.float-left               { float:left  !important; }
+.float-right              { float:right !important; }
+[class*="float-"]         { position:relative; }
+[class*="float-"]::after  { display:block; min-height:1px; content:""; }
+
+
+/* ************************************************************************ */
+/* ************************************************************************ */
+/*                                                                          */
+/* RENDERING                                                        */
+/*                                                                          */
+/* ************************************************************************ */
+/* ************************************************************************ */
+
+.overflow             { overflow:auto; }
+.overflow-none        { overflow:hidden; }
+.overflow-x           { overflow:hidden; overflow-x:auto; }
+.overflow-y           { overflow:hidden; overflow-y:auto; }
+.no-gutter, .nogutter { margin:0px; padding:0px; outline:0px; }
+
+
+/*
+ * IMAGES
+ *
+ */
+img        { display: inline-block; margin: 0px; padding: 0px; border: 0px; max-width: 100%; height: auto; }
+canvas     { -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+.thumbnail { background-position: center center; background-size: cover; overflow:hidden; }
+
+/*
+ * CONTAINERS
+ *
+ */
+div.x-wrapper          { width:100%; height:auto; white-space:nowrap; overflow-x:auto; }
+div.wrapper            { width:100%; height:100%; overflow:auto; }
+table                  { width:auto; background-color:transparent; border-collapse:collapse; border:0; }
+td,th                  { text-align:left; word-wrap:break-word; padding:0; border:0; }
+
+.rounded               { border-radius:50vh; } /* Hack:using a ridiculously large value will create the desired effect */
+.circle                { border-radius:50%; }
+
+div.square             { position:relative; }
+div.square::before     { content:""; display:block; padding-top:100%; }
+div.square div.content { position:absolute; top:0; left:0; bottom:0; right:0; }
+div.sticky             { position:sticky; }
+
+/*
+ * FLEX
+ *
+ */
+.flex {
+  display: flex;
+}
+
+/* Direction */
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+/* Horizontal alignment */
+.flex-left {
+  justify-content: flex-start;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+/* Vertical alignment */
+.flex-top {
+  align-items: flex-start;
+}
+
+.flex-middle {
+  align-items: center;
+}
+
+.flex-bottom {
+  align-items: flex-end;
+}
+
+/* No stretching */
+.flex-no-stretch {
+  align-items: flex-start;
+}
+
+/* Fixed-size items */
+.flex-fixed {
+  flex: 0 0 auto;
+}
+
+.flex-block {
+    /* Automatically shrinks to fit its own content */
+    flex-shrink: 0;    
+}
+
+.flex-pad {
+    /* Forces this div to grow and fill all remaining space */
+    flex-grow: 1;    
+}
+
+/*
+Examples
+
+Center something perfectly
+
+<div class="flex flex-center flex-middle">
+  <div class="flex-fixed">Hello</div>
+</div>
+
+Horizontal toolbar (left aligned, vertically centered)
+
+<div class="flex flex-left flex-middle">
+  <button class="flex-fixed">Save</button>
+  <button class="flex-fixed">Cancel</button>
+</div>
+
+Column layout, top aligned
+
+<div class="flex flex-column flex-top">
+  <div class="flex-fixed">Item 1</div>
+  <div class="flex-fixed">Item 2</div>
+</div>
+
+*/
+
+/*
+ * TEXT SELECTION
+ *
+ */
+*, .noselect, .no-select     { -moz-user-select:none; -webkit-user-select:none; -ms-user-select:none; user-select:none; }
+.text-select, .text-select * { -moz-user-select:text; -webkit-user-select:text; -ms-user-select:text; user-select:text !important; }
+
+
+/*
+ * AUTOFILL
+ *
+ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:inherit;
+    -webkit-text-size-adjust:105%;
+    transition:background-color 0s ease-in-out 0s;
+    box-shadow:inset 0 0 0 0 inherit;
+}
+
+/*
+ * CURSOR
+ *
+ */
+.cursor-wait     { cursor:wait;     }
+.cursor-pointer  { cursor:pointer;  }
+.cursor-default  { cursor:default;  }
+.cursor-zoom-in  { cursor:zoom-in;  }
+.cursor-zoom-out { cursor:zoom-out; }
+
+
+/* End of file: default.css
+/* ************************************************************************ */
