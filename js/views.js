@@ -206,6 +206,13 @@ const viewpaths = {
         viewpaths.routes.set(path, callback);
     },
     
+    unreg : function (path) {
+        console.info(`IN viewpaths.unreg() path='${path}'`);
+        if (viewpaths.routes.has(path)) {
+            viewpaths.routes.delete(path);
+        }
+    },
+    
     // Executes the path-related callback function
     //
     go : function (location) {
