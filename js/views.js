@@ -52,6 +52,19 @@ const view_on_top = function() {
     }
 };
 
+const view_entry_point = function() {
+    console.info(`IN view_entry_point()`);
+    let views = view_all();
+    if (views.length > 0) {
+        for (let i = 0; i < views.length; i++) {
+            if (!jQuery(`#${views[i]}`).hasClass('hidden')) {
+                return views[i];
+            }
+        }
+    }
+    return "";
+};
+
 const bring_to_front = function(view_id) {
     //console.info(`IN bring_to_front() view_id='${view_id}'`);
     const views = view_all();
@@ -67,6 +80,15 @@ const bring_to_front = function(view_id) {
         }
     }
 };
+
+const rewind = function() {
+    console.info(`IN rewind()`);
+    const view_id = view_entry_point();
+    console.log (`resolved view_id='${view_id}'`);
+    if (strlen(view_id) > 0) {
+        bring_to_front(view_id);
+    }
+}
 
 const dump_views = function() {
     let viewTop = view_on_top();
@@ -142,7 +164,7 @@ const exec = function(view_id, options = {}) {
         
         const obj = object(view_id);
         if (obj) {
-            if (!obj.UIExists()) {
+            if (!obj.visible()) {
                 obj.reset(onsuccess, onfailed, options);
                 delay(0).then(()=>{ obj.show(); });
             }
@@ -157,6 +179,77 @@ const exec = function(view_id, options = {}) {
         }
         
     });
+};
+
+
+// ****************************************************************************
+// ****************************************************************************
+//
+// VIEWPATHS NAVIGATION
+//
+// ****************************************************************************
+// ****************************************************************************
+
+const viewpaths = {
+
+    routes : new Map(),
+    
+    clear : function () {
+        console.info(`IN viewpaths.clear()`);
+        viewpaths.routes.clear();
+    },
+    
+    // path examples: /jaga/attention/?id=123456
+    //
+    reg : function (path, callback) {
+        console.info(`IN viewpaths.reg() path='${path}'`);
+        viewpaths.routes.set(path, callback);
+    },
+    
+    // Executes the path-related callback function
+    //
+    go : function (location) {
+        console.info(`IN viewpaths.go() location='${location}'`);
+        const path = location.pathname;
+        console.log(path);
+        if (viewpaths.routes.has(path)) {
+            const params = new URLSearchParams(location.search);
+            console.log(params);
+            const args = Object.fromEntries(params);
+            console.log(args);
+            viewpaths.routes.get(path).callback(args);
+        }
+    },
+    
+    open : function (location) {
+        console.info(`IN viewpaths.go() location='${location}'`);
+        const path = location.pathname;
+        console.log(path);
+        if (viewpaths.routes.has(path)) {
+            const tokens = path.split("/").filter(Boolean);
+            const open_id = tokens.at(0);
+            if ((open_id === "open") || (open_id === "openview")) {
+                const view_id = (tokens.length > 0) ? tokens.at(-1) : "";
+                console.log(view_id);
+                const obj = object(view_id);
+                if (obj) {
+                    const params = new URLSearchParams(location.search);
+                    console.log(params);
+                    const args = Object.fromEntries(params);
+                    console.log(args);
+                    obj.args(args);
+                    delay(100).then(()=>{ render(view_id); });
+                }
+                else {
+                    console.error(`no such object: '${view_id}'`);
+                }
+            }
+            else {
+                viewpaths.go(location);
+            }
+        }
+    }
+
 };
 
 
@@ -185,13 +278,13 @@ class view {
     // ************************************************************************
 
     constructor(view_id, contentHTML = "", contentURI = "", onsuccess = null, onfailed = null) {
-      this.view_id = view_id;
-      this.contentHTML = contentHTML;
-      this.contentURI  = contentURI ;
-      this.onsuccess   = onsuccess  ;
-      this.onfailed    = onfailed   ;
-      this.options = {};
-        this.form = (typeof form !== "undefined") ? new form(`view_id`) : null;
+        this.view_id     = view_id;
+        this.contentHTML = contentHTML;
+        this.contentURI  = contentURI ;
+        this.onsuccess   = onsuccess  ;
+        this.onfailed    = onfailed   ;
+        this.options     = {};
+        this.form        = null;
     }
 
     args(options = {}) {
