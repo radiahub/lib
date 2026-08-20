@@ -190,50 +190,72 @@ const exec = function(view_id, options = {}) {
 // ****************************************************************************
 // ****************************************************************************
 
+/*
+let href = /jaga/refresh_map/?map=home.map&time=now
+           <----location----><--URLSearchParams--->
+*/
+
 const viewpaths = {
 
     routes : new Map(),
+    
+    makehref : function (location, args={}) {
+        if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
+        console.info(`IN viewpaths.makehref() location='${location}'`);
+        console.log(args);
+        if (Object.keys(args).length > 0) {
+            const searchParams = new URLSearchParams(args);
+            console.log(searchParams.toString());
+            const url = URL(location);
+            url.search = searchParams.toString();
+            console.log(url.href);
+            return url.href;
+        }
+        return location;
+    },
     
     clear : function () {
         console.info(`IN viewpaths.clear()`);
         viewpaths.routes.clear();
     },
     
-    // path examples: /jaga/attention/?id=123456
+    // location examples: /jaga/attention/
     //
-    reg : function (path, callback) {
-        console.info(`IN viewpaths.reg() path='${path}'`);
-        viewpaths.routes.set(path, callback);
+    reg : function (location, callback = noop) {
+        if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
+        console.info(`IN viewpaths.reg() location='${location}'`);
+        viewpaths.routes.set(location, callback);
     },
     
-    unreg : function (path) {
-        console.info(`IN viewpaths.unreg() path='${path}'`);
-        if (viewpaths.routes.has(path)) {
-            viewpaths.routes.delete(path);
+    unreg : function (location) {
+        if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
+        console.info(`IN viewpaths.unreg() location='${location}'`);
+        if (viewpaths.routes.has(location)) {
+            viewpaths.routes.delete(location);
         }
     },
     
     // Executes the path-related callback function
     //
-    go : function (location) {
-        console.info(`IN viewpaths.go() location='${location}'`);
-        const path = location.pathname;
-        console.log(path);
-        if (viewpaths.routes.has(path)) {
-            const params = new URLSearchParams(location.search);
+    exec : function (href) {
+        console.info(`IN viewpaths.exec() href='${href}'`);
+        const location = href.pathname;
+        console.log(location);
+        if (viewpaths.routes.has(location)) {
+            const params = new URLSearchParams(href.search);
             console.log(params);
             const args = Object.fromEntries(params);
             console.log(args);
-            viewpaths.routes.get(path).callback(args);
+            viewpaths.routes.get(location).callback(args);
         }
     },
     
-    open : function (location) {
-        console.info(`IN viewpaths.go() location='${location}'`);
-        const path = location.pathname;
-        console.log(path);
-        if (viewpaths.routes.has(path)) {
-            const tokens = path.split("/").filter(Boolean);
+    open : function (href) {
+        console.info(`IN viewpaths.open() href='${href}'`);
+        const location = href.pathname;
+        console.log(location);
+        if (viewpaths.routes.has(location)) {
+            const tokens = location.split("/").filter(Boolean);
             const open_id = tokens.at(0);
             if ((open_id === "open") || (open_id === "openview")) {
                 const view_id = (tokens.length > 0) ? tokens.at(-1) : "";
@@ -252,7 +274,7 @@ const viewpaths = {
                 }
             }
             else {
-                viewpaths.go(location);
+                viewpaths.exec(href);
             }
         }
     }
