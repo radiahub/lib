@@ -677,7 +677,7 @@ const originalConsole = {
 
 const redirectConsole = function() {
     //console.info("IN redirectConsole()");
-    //E.info("IN redirectConsole()")
+    E.info("IN redirectConsole()");
     if (E.redirected) { return; }
     
     E.redirected = true;
@@ -718,7 +718,7 @@ const restoreConsole = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     E.activate();
-    if ((window.matchMedia)&&(window.matchMedia('(max-width: 768px)').matches)) {
+    if ((window.matchMedia)&&(window.matchMedia('(max-width: 767px)').matches)) {
         redirectConsole();
     }
     setTimeout(()=>{

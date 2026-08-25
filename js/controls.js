@@ -18,14 +18,68 @@
 // ****************************************************************************
 // ****************************************************************************
 //
+// UI CONTROLLER
+//
+// ****************************************************************************
+// ****************************************************************************
+
+const ui = {
+    
+   /*
+    * Objects reference
+    */
+    cache    : new cache(),
+    registry : new registry(),
+    
+   /*
+    * Files
+    */
+    load : function(filepath, section = ""){
+        
+        //console.info(`IN ui.load() filepath='${filepath}' section='${section}'`);
+        
+        const ststart = `<!--${section}-->`;
+        const stend = `<!--${section}-end-->`;
+        
+        let buffer = ui.cache.get(filepath);
+        if (buffer.length > 0) {
+            buffer = buffer.replaceAll("  ", " ");
+            if (section.length > 0) {
+                buffer = str_section(buffer, ststart, stend);
+                return buffer;
+            }
+            else {
+                return buffer;
+            }
+        }
+        
+        return "";
+    }
+    
+};
+
+
+// ****************************************************************************
+// ****************************************************************************
+//
 // EFFECTS
 //
 // ****************************************************************************
 // ****************************************************************************
 
+/*
+ * Default animation and durations times
+ */
+const animation_fast   = 200;
+const animation_normal = 300;
+const animation_slow   = 600;
+const duration_short   = 1500;
+const duration_normal  = 3000;
+const duration_long    = 4500;
+
 let rippling = false;
 
-const ripple = async (element, callback=noop, duration=300)=>{
+const ripple = async (element, callback=noop, duration=animation_normal)=>{
 
     //console.info("IN ripple()");
     if (rippling) { return; }
@@ -41,7 +95,7 @@ const ripple = async (element, callback=noop, duration=300)=>{
     //alert(element.tagName);
 
     if (strcasecmp(element.tagName,"SPAN") === 0) {
-        duration = 200;
+        duration = animation_fast;
         jQuery(element).addClass(`ripple`);
         await defer(duration, async ()=>{
             jQuery(element).removeClass(`ripple`);

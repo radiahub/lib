@@ -15,12 +15,14 @@
 //
 // ============================================================================
 
-const MAPBOX_TOKEN      = 'pk.eyJ1Ij...';
+const MAPBOX_TOKEN      = 'pk.eyJ1IjoicmFkaWFodWIiLCJhIjoiY201Z2RubzhiMDRyczJ2czR4aGowN2pwNyJ9.gyphW7zZdcov_ZNGfw0edA';
 const DEFAULT_LONGITUDE = 106.816666; // Default to Jakarta
 const DEFAULT_LATITUDE  = -6.200000;
 const DEFAULT_POSITION  = [DEFAULT_LONGITUDE,DEFAULT_LATITUDE];
 
-mapboxgl.accessToken = MAPBOX_TOKEN;
+if (typeof mapboxgl !== "undefined") {
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+}
 
 /**
  * Calculates the great-circle distance between two points in kilometers or miles.

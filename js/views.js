@@ -150,7 +150,7 @@ const open = function(view_id, options = {}) {
  * Uses Promise-based async interactive  API
  *
  */
-const exec = function(view_id, options = {}) {
+const exec = function(view_id, options = {}, pageURI = "") {
     return new Promise((resolve)=>{
         console.info(`IN exec() view_id='${view_id}'`);
         
@@ -166,7 +166,14 @@ const exec = function(view_id, options = {}) {
         if (obj) {
             if (!obj.visible()) {
                 obj.reset(onsuccess, onfailed, options);
-                delay(0).then(()=>{ obj.show(); });
+                if (strlen(pageURI) > 0) {
+                    obj.setpage(pageURI).then(()=>{
+                        obj.show();
+                    });
+                }
+                else {
+                    delay(0).then(()=>{ obj.show(); });
+                }
             }
             else {
                 console.error(`object '${view_id}' already on UI`);
@@ -185,7 +192,7 @@ const exec = function(view_id, options = {}) {
 // ****************************************************************************
 // ****************************************************************************
 //
-// VIEWPATHS NAVIGATION
+// VIEWPATH NAVIGATION
 //
 // ****************************************************************************
 // ****************************************************************************
@@ -195,13 +202,13 @@ let href = /jaga/refresh_map/?map=home.map&time=now
            <----location----><--URLSearchParams--->
 */
 
-const viewpaths = {
+const viewpath = {
 
     routes : new Map(),
     
     makehref : function (location, args={}) {
         if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
-        console.info(`IN viewpaths.makehref() location='${location}'`);
+        console.info(`IN viewpath.makehref() location='${location}'`);
         console.log(args);
         if (Object.keys(args).length > 0) {
             const searchParams = new URLSearchParams(args);
@@ -215,46 +222,46 @@ const viewpaths = {
     },
     
     clear : function () {
-        console.info(`IN viewpaths.clear()`);
-        viewpaths.routes.clear();
+        console.info(`IN viewpath.clear()`);
+        viewpath.routes.clear();
     },
     
     // location examples: /jaga/attention/
     //
     reg : function (location, callback = noop) {
         if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
-        console.info(`IN viewpaths.reg() location='${location}'`);
-        viewpaths.routes.set(location, callback);
+        console.info(`IN viewpath.reg() location='${location}'`);
+        viewpath.routes.set(location, callback);
     },
     
     unreg : function (location) {
         if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
-        console.info(`IN viewpaths.unreg() location='${location}'`);
-        if (viewpaths.routes.has(location)) {
-            viewpaths.routes.delete(location);
+        console.info(`IN viewpath.unreg() location='${location}'`);
+        if (viewpath.routes.has(location)) {
+            viewpath.routes.delete(location);
         }
     },
     
     // Executes the path-related callback function
     //
     exec : function (href) {
-        console.info(`IN viewpaths.exec() href='${href}'`);
+        console.info(`IN viewpath.exec() href='${href}'`);
         const location = href.pathname;
         console.log(location);
-        if (viewpaths.routes.has(location)) {
+        if (viewpath.routes.has(location)) {
             const params = new URLSearchParams(href.search);
             console.log(params);
             const args = Object.fromEntries(params);
             console.log(args);
-            viewpaths.routes.get(location).callback(args);
+            viewpath.routes.get(location).callback(args);
         }
     },
     
     open : function (href) {
-        console.info(`IN viewpaths.open() href='${href}'`);
+        console.info(`IN viewpath.open() href='${href}'`);
         const location = href.pathname;
         console.log(location);
-        if (viewpaths.routes.has(location)) {
+        if (viewpath.routes.has(location)) {
             const tokens = location.split("/").filter(Boolean);
             const open_id = tokens.at(0);
             if ((open_id === "open") || (open_id === "openview")) {
@@ -274,7 +281,7 @@ const viewpaths = {
                 }
             }
             else {
-                viewpaths.exec(href);
+                viewpath.exec(href);
             }
         }
     }
@@ -309,9 +316,9 @@ class view {
     constructor(view_id, contentHTML = "", contentURI = "", onsuccess = null, onfailed = null) {
         this.view_id     = view_id;
         this.contentHTML = contentHTML;
-        this.contentURI  = contentURI ;
-        this.onsuccess   = onsuccess  ;
-        this.onfailed    = onfailed   ;
+        this.contentURI  = contentURI;
+        this.onsuccess   = onsuccess;
+        this.onfailed    = onfailed;
         this.options     = {};
         this.form        = null;
     }
@@ -331,7 +338,7 @@ class view {
         }
         this.args(options);
     }
-
+    
 
     // ************************************************************************
     // ************************************************************************
@@ -519,6 +526,31 @@ class view {
                 jQuery(document.body).append(contHtml);
             }
             delay(0).then(()=>{ that.onshow(); });
+        });
+    }
+    
+    setpage (pageURI, options = {}) {
+        return new Promise((resolve)=>{
+            this.contentHTML = "";
+            this.contentURI = pageURI;
+            const is_visible = this.visible();
+            //const is_visible = DOMExists(this.view_id);
+            if (is_visible) {
+                this.remove();
+            }
+            this.options = {};
+            this.args(options);
+            delay(0).then(()=>{
+                if (is_visible) {
+                    this.show();
+                    delay(0).then(()=>{
+                        resolve(true);
+                    });
+                }
+                else {
+                    resolve(true);
+                }
+            });
         });
     }
 
