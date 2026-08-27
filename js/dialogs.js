@@ -25,7 +25,7 @@ const toast = function (message, type = 'info', position = 'bottom', image = '',
     
     const container_id = 'toast-container-' + position;
     if (!DOMExists(container_id)) {
-        let toastHtml = ui.load("/lib/html/toast.html");
+        let toastHtml = ui.load("/lib/html/dialogs.html", "toast");
         jQuery(document.body).append(toastHtml);
     }
     
@@ -41,11 +41,10 @@ const toast = function (message, type = 'info', position = 'bottom', image = '',
         toastHtml = toastHtml.replaceAll(`[image]`, image);
     }
     else {
-        toastHtml = str_section_erase(toastHtml, "<!--image-->", "<!--end-->");
+        toastHtml = ui.html_strip_section(toastHtml, "image");
     }
-    toastHtml = toastHtml.replaceAll(`[message]`, message);
-    toastHtml = toastHtml.replaceAll(`[type]`, type);
     
+    toastHtml = toastHtml.replaceAll(`[message]`, message);
     toast.innerHTML = toastHtml;
     
     // 3. Append to target wrapper
@@ -95,14 +94,14 @@ const alert = function (message = '', title = '', btnOK = 'CLOSE') {
             contHtml = str_replace("[title]", title, contHtml);
         }
         else {
-            contHtml = str_section_erase(contHtml,"<!--dialog_title-->","<!--end-->");
+            contHtml = ui.html_strip_section(contHtml, "dialog_title");
         }
         
         if (message.length > 0) {
             contHtml = str_replace("[message]", message, contHtml);
         }
         else {
-            contHtml = str_section_erase(contHtml,"<!--dialog_message-->","<!--end-->");
+            contHtml = ui.html_strip_section(contHtml, "dialog_message");
         }
         
         contHtml = str_replace("[btn-prompt-ok]", btnOK, contHtml);
@@ -157,14 +156,14 @@ const confirm = function (message = '', title = '', btnOK = 'OK', btnCancel = 'C
             contHtml = str_replace("[title]", title, contHtml);
         }
         else {
-            contHtml = str_section_erase(contHtml,"<!--dialog_title-->","<!--end-->");
+            contHtml = ui.html_strip_section(contHtml, "dialog_title");
         }
         
         if (message.length > 0) {
             contHtml = str_replace("[message]", message, contHtml);
         }
         else {
-            contHtml = str_section_erase(contHtml,"<!--dialog_message-->","<!--end-->");
+            contHtml = ui.html_strip_section(contHtml, "dialog_message");
         }
         
         contHtml = str_replace("[btn-prompt-ok]", btnOK, contHtml);
@@ -226,26 +225,26 @@ const prompt = function (message = '', title = '', type = 'text', value = '', de
             contHtml = str_replace("[title]", title, contHtml);
         }
         else {
-            contHtml = str_section_erase(contHtml,"<!--dialog_title-->","<!--end-->");
+            contHtml = ui.html_strip_section(contHtml, "dialog_title");
         }
         
         if (message.length > 0) {
             contHtml = str_replace("[message]", message, contHtml);
         }
         else {
-            contHtml = str_section_erase(contHtml,"<!--dialog_message-->","<!--end-->");
+            contHtml = ui.html_strip_section(contHtml, "dialog_message");
         }
         
         switch (type.toLowerCase()) {
             case 'string':
             case 'text'  : {
-                 contHtml = str_section_erase(contHtml,"<!--dialog_numeric_input-->","<!--end-->");
+                contHtml = ui.html_strip_section(contHtml, "dialog_numeric_input");
                 break;
             }
             case 'numeric':
             case 'number' : 
             case 'num'    : {
-                contHtml = str_section_erase(contHtml,"<!--dialog_text_input-->","<!--end-->");
+                contHtml = ui.html_strip_section(contHtml, "dialog_text_input");
                 break;
             }
         }
