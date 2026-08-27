@@ -1,0 +1,117 @@
+<!--toast-->
+<div id="toast-container-top" aria-live="polite"></div>
+<div id="toast-container-bottom" aria-live="polite"></div>
+<div id="divtpl-toast" style="display:none;">
+    <!--image-->
+    <img class="toast-image" src="[image]" alt="" style="flex-shrink: 0;">
+    <!--image-end-->
+    <span class="toast-message" style="flex-grow: 1;">[message]</span>
+    <div class="toast-close flex flex-center flex-middle" style="flex-shrink: 0;">&times;</div>
+</div>
+<!--toast-end-->
+
+<!--alert-->
+<div id="alert-container" class="overlay dimmed flex flex-column flex-center flex-middle" style="font-size:1.0rem; z-index: var(--z-dialog-tool);">
+
+  <div class="dialog shadow-small-light" style="position:relative; border-radius:var(--radius-small);">
+
+    <!--dialog_title-->
+    <div style="margin-top: 0; color: var(--color-primary-strong); font-size: 1.1rem; font-weight: var(--font-weight-medium);">
+      [title]
+    </div>
+    <!--dialog_title-end-->
+    
+    <!--dialog_message-->
+    <div style="margin-top:1.0rem; color:var(--color-primary); font-size:1.0rem; font-weight: var(--font-weight-normal);">
+      [message]
+    </div>
+    <!--dialog_message-end-->
+
+    <div style="margin-top:2.5rem; color:var(--color-primary-strong); font-size:1.0rem;">
+        <div class="flex flex-column flex-center flex-middle">
+            <div id="BTN_PROMPT_OK" class="btn-prompt-ok link primary bold" style="padding:var(--space-small); border-radius: var(--radius-tiny); text-transform: uppercase;">[btn-prompt-ok]</div>
+        </div>
+    </div>
+
+  </div>
+
+</div>
+<!--alert-end-->
+
+<!--confirm-->
+<div id="confirm-container" class="overlay dimmed flex flex-column flex-center flex-middle" style="font-size:1.0rem; z-index: var(--z-dialog-tool);">
+
+  <div class="dialog shadow-small-light" style="position:relative; border-radius:var(--radius-small);">
+
+    <!--dialog_title-->
+    <div style="margin-top: 0; color: var(--color-primary-strong); font-size: 1.1rem; font-weight: var(--font-weight-medium);">
+      [title]
+    </div>
+    <!--dialog_title-end-->
+    
+    <!--dialog_message-->
+    <div style="margin-top:1.0rem; color:var(--color-primary); font-size:1.0rem; font-weight: var(--font-weight-normal);">
+      [message]
+    </div>
+    <!--dialog_message-end-->
+
+    <div style="margin-top:2.5rem; font-size:1.0rem;">
+      <div id="BTN_PROMPT_OK" class="btn-prompt-ok float-right link bold" style="margin-left:2.0rem; padding:var(--space-small); border-radius: var(--radius-tiny); color:var(--color-primary-strong); text-transform: uppercase;">[btn-prompt-ok]</div>
+      <div id="BTN_PROMPT_CANCEL" class="btn-prompt-cancel float-right link" style="padding:var(--space-small); border-radius: var(--radius-tiny); color:var(--color-primary); text-transform: uppercase;">[btn-prompt-cancel]</div>
+    </div>
+    
+  </div>
+
+</div>
+<!--confirm-end-->
+
+<!--prompt-->
+<div id="prompt-container" class="overlay dimmed flex flex-column flex-center flex-middle" style="font-size:1.0rem; z-index: var(--z-dialog-tool);">
+
+  <div class="dialog shadow-small-light" style="position:relative; border-radius:var(--radius-small);">
+
+    <!--dialog_title-->
+    <div style="margin-top: 0; color: var(--color-primary-strong); font-size: 1.1rem; font-weight: var(--font-weight-medium);">
+      [title]
+    </div>
+    <!--dialog_title-end-->
+    
+    <!--dialog_message-->
+    <div style="margin-top:1.0rem; color:var(--color-primary); font-size:1.0rem; font-weight: var(--font-weight-normal);">
+      [message]
+    </div>
+    <!--dialog_message-end-->
+
+    <!--dialog_text_input-->
+    <div class="row focusable" style="margin-top:var(--space-small); padding:var(--space-medium)">
+        <input id="inp-prompt" class="ui edit" type="text" inputmode="text" maxlength="255" autocomplete="one-time-code" style="width:100%; background:transparent; border:none; font-size:1.0rem; color:var(--color-primary-strong)" value="[value]"/>
+    </div>
+    <!--dialog_text_input-end-->
+
+    <!--dialog_numeric_input-->
+    <div class="row focusable" style="margin-top:var(--space-small); padding:var(--space-medium)">
+        <input id="inp-prompt" type="text" inputmode="numeric" autocomplete="off" style="width:100%; background:transparent; border:none; font-size:1.0rem; color:var(--color-primary-strong)" value="[value]">
+         <script>
+            var mode = "decimal";
+            var mask_format = { 
+                radixPoint           : decimalsSeparator(),
+                groupSeparator       : thousandsSeparator(),
+                placeholder          : "",
+                digits               : [decimals],
+                enforceDigitsOnBlur  : true,
+                positionCaretOnClick : "select"
+            };
+            jQuery("#inp-prompt").inputmask(mode, mask_format);
+        </script>
+    </div>        
+    <!--dialog_numeric_input-end-->
+    
+    <div style="margin-top:2.5rem; font-size:1.0rem;">
+      <div id="BTN_PROMPT_OK" class="btn-prompt-ok float-right link bold" style="margin-left:2.0rem; padding:var(--space-small); border-radius: var(--radius-tiny); color:var(--color-primary-strong); text-transform: uppercase;">[btn-prompt-ok]</div>
+      <div id="BTN_PROMPT_CANCEL" class="btn-prompt-cancel float-right link" style="padding:var(--space-small); border-radius: var(--radius-tiny); color:var(--color-primary); text-transform: uppercase;">[btn-prompt-cancel]</div>
+    </div>
+    
+  </div>
+
+</div>
+<!--prompt-end-->
