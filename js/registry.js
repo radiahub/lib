@@ -1,4 +1,3 @@
-alert(`registry`);
 
 /*
  * Trivial class registry

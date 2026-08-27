@@ -34,7 +34,7 @@ const ui = {
    /*
     * Files
     */
-    load : function(filepath, section = ""){
+    load : function (filepath, section = ""){
         
         //console.info(`IN ui.load() filepath='${filepath}' section='${section}'`);
         
@@ -54,6 +54,15 @@ const ui = {
         }
         
         return "";
+    },
+    
+   /*
+    * HTML edit
+    */
+    html_strip_section: function (html, section) {
+        const ststart = `<!--${section}-->`;
+        const stend = `<!--${section}-end-->`;
+        return str_section_erase(html, ststart, stend);
     }
     
 };
