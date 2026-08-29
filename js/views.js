@@ -192,101 +192,145 @@ const exec = function(view_id, options = {}, pageURI = "") {
 // ****************************************************************************
 // ****************************************************************************
 //
-// VIEWPATH NAVIGATION
+// DISPATCHER
 //
 // ****************************************************************************
 // ****************************************************************************
 
 /*
-let href = /jaga/refresh_map/?map=home.map&time=now
-           <----location----><--URLSearchParams--->
+let href = /open/refresh_map/?map=home.map&time=now
+           <---location----><---URLSearchParams--->
 */
 
-const viewpath = {
+const dispatcher = {
 
-    routes : new Map(),
+    // collection : array of { path=..., callback=... } objects
+    // callback   : function(href) {return new Promise(()=>{...});
+    //
+    collection : [],
     
-    makehref : function (location, args={}) {
-        if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
-        console.info(`IN viewpath.makehref() location='${location}'`);
+    format : function (path) {
+        if (path.slice(0, 1) !== "/") { path = "/" + path; }
+        if (path.slice(strlen(path) - 1) !== "/") { path += "/"; }
+        return path;
+    },
+    
+    indexOf: function (path, strict = false) {
+        path = dispatcher.format(path);
+        for (let i = 0; i < dispatcher.collection.length; i++) {
+            if (dispatcher.collection[i]["path"] === path) {
+                return i;
+            }
+        }
+        if (strict) {
+            return -1;
+        }
+        else {
+            const tokens = path.split("/").filter(Boolean);
+            const first_one = dispatcher.format(tokens.at(0));
+            for (let i = 0; i < dispatcher.collection.length; i++) {
+                if (dispatcher.collection[i]["path"] === first_one) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    },
+    
+    get : function (path, strict = false) {
+        path = dispatcher.format(path);
+        let idx = dispatcher.indexOf(path, strict);
+        if (idx >= 0) {
+            return dispatcher.collection[i]["callback"];
+        }
+    },
+    
+    reg : function (path, callback) {
+        // console.info(`IN dispatcher.reg() path='${path}'`);
+        path = dispatcher.format(path);
+        // console.log(path);
+        if (typeof callback === "function") {
+            let idx = dispatcher.indexOf(path, true);
+            if (idx >= 0) {
+                dispatcher.collection[idx]["callback"] = callback;
+            }
+            else {
+                dispatcher.collection.push({
+                    path : path,
+                    callback: callback
+                });
+            }
+        }
+    },
+
+    unreg : function (path) {
+        path = dispatcher.format(path);
+        let idx = dispatcher.indexOf(path, true);
+        if (idx >= 0) {
+                dispatcher.collection.splice(idx, 1);
+        }
+    },
+
+    execute : function (href) {
+        console.info(`IN dispatcher.execute() href='${href}'`);
+        
+        let url = new URL(href, window.location.origin);
+        const path = dispatcher.format(url.pathname);
+        //console.log(path);
+        const search = new URLSearchParams(url.search);
+        const params = Object.fromEntries(search);
+        console.log(params);
+        let idx = dispatcher.indexOf(path, false);
+        console.log(idx);
+        if (idx >= 0) {
+            dispatcher.collection[idx]["callback"](href);
+        }
+    },
+
+    animate : function (eltID) {
+        console.info(`IN dispatcher.animate() eltID='${eltID}'`);
+        jQuery(`#${eltID} .dispatcher`).off("click").on("click", function() {
+            const that = this;
+            //console.log(jQuery(that));
+            ripple(that, function() {
+                const href = jQuery(that).attr("href");
+                if (strlen(href) > 0) {
+                    dispatcher.execute(href);
+                }
+            });
+        });
+    },
+   
+    makehref : function (path, args={}) {
+        path = dispatcher.format(path);
+        console.info(`IN dispatcher.makehref() path='${path}'`);
         console.log(args);
         if (Object.keys(args).length > 0) {
             const searchParams = new URLSearchParams(args);
             console.log(searchParams.toString());
-            const url = URL(location);
+            const url = URL(path);
             url.search = searchParams.toString();
             console.log(url.href);
             return url.href;
         }
-        return location;
-    },
-    
-    clear : function () {
-        console.info(`IN viewpath.clear()`);
-        viewpath.routes.clear();
-    },
-    
-    // location examples: /jaga/attention/
-    //
-    reg : function (location, callback = noop) {
-        if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
-        console.info(`IN viewpath.reg() location='${location}'`);
-        viewpath.routes.set(location, callback);
-    },
-    
-    unreg : function (location) {
-        if (location.slice(location.length - 1, 1) !== "/") { location += "/"; }
-        console.info(`IN viewpath.unreg() location='${location}'`);
-        if (viewpath.routes.has(location)) {
-            viewpath.routes.delete(location);
-        }
-    },
-    
-    // Executes the path-related callback function
-    //
-    exec : function (href) {
-        console.info(`IN viewpath.exec() href='${href}'`);
-        const location = href.pathname;
-        console.log(location);
-        if (viewpath.routes.has(location)) {
-            const params = new URLSearchParams(href.search);
-            console.log(params);
-            const args = Object.fromEntries(params);
-            console.log(args);
-            viewpath.routes.get(location).callback(args);
-        }
-    },
-    
-    open : function (href) {
-        console.info(`IN viewpath.open() href='${href}'`);
-        const location = href.pathname;
-        console.log(location);
-        if (viewpath.routes.has(location)) {
-            const tokens = location.split("/").filter(Boolean);
-            const open_id = tokens.at(0);
-            if ((open_id === "open") || (open_id === "openview")) {
-                const view_id = (tokens.length > 0) ? tokens.at(-1) : "";
-                console.log(view_id);
-                const obj = object(view_id);
-                if (obj) {
-                    const params = new URLSearchParams(location.search);
-                    console.log(params);
-                    const args = Object.fromEntries(params);
-                    console.log(args);
-                    obj.args(args);
-                    delay(100).then(()=>{ render(view_id); });
-                }
-                else {
-                    console.error(`no such object: '${view_id}'`);
-                }
-            }
-            else {
-                viewpath.exec(href);
-            }
-        }
+        return path;
     }
-
+    
 };
+
+dispatcher.reg(`/open/`, function(href) {
+    console.info(`IN /open/ execution href='${href}'`);
+    const url = new URL(href, window.location.origin);
+    const path = url.pathname;
+    //console.log(path);
+    const tokens = path.split("/").filter(Boolean);
+    const view_id = tokens.at(1);
+    console.log(view_id);
+    const search = new URLSearchParams(url.search);
+    const options = Object.fromEntries(search);
+    console.log(options);
+    open(view_id, options);
+});
 
 
 // ****************************************************************************
@@ -383,8 +427,8 @@ class view {
     // overwrite: sometimes
     //
     onthemechanged() {
-        //console.log(`IN view.onthemechanged('${this.view_id}')`);
-        // Do something meaningful with the view layout
+        // console.log(`IN view.onthemechanged('${this.view_id}')`);
+        // Do something meaningful with the theme
         //
     }
 
@@ -392,7 +436,7 @@ class view {
     // overwrite: sometimes
     //
     onviewportresize() {
-        //console.log(`IN view.onviewportresize('${this.view_id}')`);
+        // console.log(`IN view.onviewportresize('${this.view_id}')`);
         // Do something meaningful with the view layout
         //
     }
@@ -428,8 +472,8 @@ class view {
     remove() {
         console.log(`IN view.remove() view_id='${this.view_id}'`);
         jQuery(`#${this.view_id}`).remove();
-        events.unreg('themechanged',  `${this.view_id}.onthemechanged`);
-        events.unreg('viewportresize',`${this.view_id}.onviewportresize`);
+        events.unreg('themechanged',   this.onthemechanged);
+        events.unreg('viewportresize', this.onviewportresize);
         if (this.form) {
             this.form.remove();
         }
@@ -473,7 +517,7 @@ class view {
                 const terminate = function(uri) {
                     fread(uri).then((buffer)=>{
                         if (buffer) {
-                            that.options.contentHTML = buffer;
+                            that.contentHTML = buffer;
                             resolve(that.onload(buffer));
                         }
                         else {
@@ -506,9 +550,9 @@ class view {
     onshow() {
         //console.log(`IN view.onshow() view_id='${this.view_id}'`);
         this.onthemechanged();
-        events.reg(`themechanged`, `${this.view_id}.onthemechanged`, this.onthemechanged);
+        events.reg(`themechanged`, this.onthemechanged);
         this.onviewportresize();
-        events.reg(`viewportresize`, `${this.view_id}.onviewportresize`, this.onviewportresize);
+        events.reg(`viewportresize`, this.onviewportresize);
         // Do something useful here
         //
     }

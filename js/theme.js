@@ -30,19 +30,18 @@ var theme = {
 	// **************************************************************************
 	// **************************************************************************
 
-	getPreferredColorScheme : function()
-	{
-		//console.info("IN theme.getPreferredColorScheme()");
-		if (window.matchMedia) {
-    		var themeID = (window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark" : "light";
-			return themeID;
-		}
-		else {
-			var classname = document.documentElement.className;
-			var themeID = str_replace("theme-", "", classname);
-			return themeID;
-		}
-	},
+    		getPreferredColorScheme : function() {
+    		    		//console.info("IN theme.getPreferredColorScheme()");
+    		    		if (window.matchMedia) {
+    		    		    		var themeID = (window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark" : "light";
+    		    		    		return themeID;
+    		    		}
+    		    		else {
+    		    		    		var classname = document.documentElement.className;
+    		    		    		var themeID = str_replace("theme-", "", classname);
+    		    		    		return themeID;
+        }
+    		},
 
     get : function() {
         //console.info("IN theme.get()");

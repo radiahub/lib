@@ -16,7 +16,7 @@
 //
 // ============================================================================
 
-const manifest = function (fullname, shortname, accent_color = "#1289FD", description = "", icon_512 = "") {
+const manifest = function (fullname, shortname, accent_color = "#1289FD", description = "", icon_512 = "default_512x512.png") {
     return new Promise((resolve)=>{
         
         console.info(`IN manifest('${fullname}')`);

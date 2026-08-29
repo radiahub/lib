@@ -28,13 +28,12 @@ const ui = {
    /*
     * Objects reference
     */
-    cache    : new cache(),
-    registry : new registry(),
+    cache : new cache(),
     
    /*
     * Files
     */
-    load : function (filepath, section = ""){
+    load : function (filepath, section = "") {
         
         //console.info(`IN ui.load() filepath='${filepath}' section='${section}'`);
         
@@ -80,15 +79,17 @@ const ui = {
  * Default animation and durations times
  */
 const animation_fast   = 200;
-const animation_normal = 300;
+const animation_short  = 300;
+const animation_normal = 400;
 const animation_slow   = 600;
+
 const duration_short   = 1500;
 const duration_normal  = 3000;
 const duration_long    = 4500;
 
 let rippling = false;
 
-const ripple = async (element, callback=noop, duration=animation_normal)=>{
+const ripple = (element, callback=noop, duration=animation_normal)=>{
 
     //console.info("IN ripple()");
     if (rippling) { return; }
@@ -100,17 +101,17 @@ const ripple = async (element, callback=noop, duration=animation_normal)=>{
         return;
     }
     
-    //alert(element);
-    //alert(element.tagName);
+    console.log(element);
+    console.log(element.tagName);
 
     if (strcasecmp(element.tagName,"SPAN") === 0) {
-        duration = animation_fast;
-        jQuery(element).addClass(`ripple`);
-        await defer(duration, async ()=>{
-            jQuery(element).removeClass(`ripple`);
-            await callback();
+        duration = animation_short;
+        jQuery(element).removeClass(`span-ripple`).addClass(`span-ripple`);
+        setTimeout(()=>{
+            jQuery(element).removeClass(`span-ripple`);
+            callback();
             rippling = false;
-        });
+        }, duration);
     }
     else if (strcasecmp(element.tagName, "DIV") === 0) {
 
@@ -120,10 +121,7 @@ const ripple = async (element, callback=noop, duration=animation_normal)=>{
             addOVNone = true;
         }
 
-        var _ripple = element.getElementsByClassName("ripple");
-        for (var i=_ripple.length-1; i>=0; i--) {
-            _ripple[0].remove(); 
-        }
+        jQuery(`.ripple`).remove();
 
         var circle   = document.createElement("span");
         var diameter = Math.max(element.clientWidth, element.clientHeight);
@@ -136,21 +134,12 @@ const ripple = async (element, callback=noop, duration=animation_normal)=>{
         circle.classList.add("ripple");
         element.appendChild(circle);
 
-        delay(duration).then(()=>{
-            element.getElementsByClassName("ripple")[0].remove();
-            if (addOVNone) {
-                jQuery(element).removeClass("overflow-none");
-            }
-            if (is_promise(callback)) {
-                callback().then(()=>{
-                    rippling = false;
-                });
-            }
-            else {
-                callback();
-                rippling = false;
-            }
-        });
+        setTimeout(()=>{
+            jQuery(`.ripple`).remove();
+            if (addOVNone)  { jQuery(element).removeClass("overflow-none"); }
+            callback();
+            rippling = false;
+        }, duration);
     }
 };
 

@@ -16,7 +16,7 @@
 // ============================================================================
 
 const whoami = function() {
-    let identifier = storage.get(`identifier`);
+    let identifier = storage.get(`primaryEmail`);
     console.info(`IN whoami() identifier='${String(identifier)}'`);
     if (strlen(identifier) > 0) {
         return identifier;
@@ -29,9 +29,9 @@ const registerUser = function(email, name, picture, as_current_user = false) {
         console.info(`IN registerUser() email='${email}' name='${name}' picture='${picture}'`);
         
         if (as_current_user) {
-            storage.set(`identifier`,     email);
-            storage.set(`google_name`,    name);
-            storage.set(`google_picture`, picture);
+            storage.set(`primaryEmail`, email);
+            storage.set(`displayName`,  name);
+            storage.set(`pictureURI`,   picture);
         }
         
         const row = {
