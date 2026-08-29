@@ -1,0 +1,68 @@
+[
+    { "id": "loading",          "value": "Memuat" },
+    { "id": "processing",       "value": "Sedang proses" },
+
+    { "id": "cancel",           "value": "Batal" },
+    { "id": "close",            "value": "Tutup" },
+    { "id": "apply",            "value": "Terapkan" },
+    { "id": "retry",            "value": "Coba ulang" },
+    { "id": "attention",        "value": "Perhatikan" },
+    { "id": "continue",         "value": "Lanjutkan" },
+    { "id": "abort",            "value": "Batalkan" },
+    { "id": "ignore",           "value": "Abaikan" },
+    { "id": "ok",               "value": "OK" },
+    { "id": "yes",              "value": "Ya" },
+    { "id": "no",               "value": "Tidak" },
+
+    { "id": "success",          "value": "Sukses" },
+    { "id": "info",             "value": "Info" },
+    { "id": "warning",          "value": "Peringatan" },
+    { "id": "error",            "value": "Eror" },
+    { "id": "confirm",          "value": "Konfirmasi" },
+    { "id": "confirmation",     "value": "Konfirmasi" },
+    { "id": "required",         "value": "Diperlukan" },
+
+    { "id": "no_connect_title", "value": "Tidak ada koneksi" },
+    { "id": "no_connect_text",  "value": "Silakan periksa koneksi internet Anda atau hubungkan ke jaringan WiFi." },
+
+    { "id": "system_error",     "value": "Kesalahan sistem" },
+    { "id": "incorrect_value",  "value": "Input salah atau input kosong" },
+    { "id": "no_selection",     "value": "Tidak ada opsi yang dipilih" },
+    { "id": "too_many_retry",   "value": "Terlalu banyak mencoba ulang" },
+    { "id": "no_store_data",    "value": "Data Anda tidak dapat disimpan. Periksa koneksi Anda dan coba lagi"},
+    { "id": "no_phone_number",  "value": "Nomor telepon tampaknya salah" },
+    { "id": "welcome",          "value": "Selamat datang" },
+
+    { "id": "press2xToExit",    "value": "Tekan tombol kembali lagi untuk keluar" },
+
+    { "id": "disabled",         "value": "Aplikasi dinonaktifkan. Nomor telepon yang terdaftar digunakan di perangkat lain." },
+    { "id": "nopreview",        "value": "Tidak dapat menampilkan dokumen ini" },
+    { "id": "badfilesize",      "value": "Ukuran file tidak valid" },
+
+    { "id": "no_upload",        "value": "Setidaknya satu file tidak dapat diunggah" },
+    { "id": "no_change_saved",  "value": "Beberapa perubahan tidak dapat disimpan" },
+    { "id": "notification",     "value": "Anda telah menerima [no_of_messages] pesan baru" },
+
+    { "id": "monday",           "value": "Senin"  },
+    { "id": "tuesday",          "value": "Selasa" },
+    { "id": "wednesday",        "value": "Rabu"   },
+    { "id": "thursday",         "value": "Kamis"  },
+    { "id": "friday",           "value": "Jumat"  },
+    { "id": "saturday",         "value": "Sabtu"  },
+    { "id": "sunday",           "value": "Minggu" },
+
+    { "id": "day",              "value": "Hari"  },
+    { "id": "hour",             "value": "Jam"   },
+    { "id": "minute",           "value": "Menit" },
+    { "id": "second",           "value": "Detik" },
+    { "id": "days",             "value": "Hari"  },
+    { "id": "hours",            "value": "Jam"   },
+    { "id": "minutes",          "value": "Menit" },
+    { "id": "seconds",          "value": "Detik" },
+
+    { "id": "message_sent",     "value": "Pesan Anda telah terkirim" },
+    { "id": "scan_code_prompt", "value": "Tempatkan kode di dalam area pemindaian" }
+
+    { "id": "rq_notification_1","value": "Notifikasi" },
+    { "id": "rq_notification_2","value": "Mohon izinkan [appname] untuk menerima notifikasi" },
+]
