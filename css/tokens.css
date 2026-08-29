@@ -97,8 +97,8 @@ Date+Time of change   By     Description
     --space-xl           : 1.5em;
   
     --height-small       : 1.20em;
-    --height-md          : 1.60em;
-    --height-lg          : 3.00em;
+    --height-medium      : 1.60em;
+    --height-large       : 3.00em;
     --height-xl          : 4.40em;
 }
 
@@ -106,22 +106,22 @@ Date+Time of change   By     Description
     --radius-none        : 0;
     --radius-tiny        : 0.25em;
     --radius-small       : 0.5em;
-    --radius-m           : 0.75em;
-    --radius-lg          : 1.25em;
+    --radius-medium      : 0.75em;
+    --radius-large       : 1.25em;
     --radius-round       : 50%;
 }
 
 :root {
     --border-width-none  : 0px;
     --border-width       : 1px;
-    --border-width-lg    : 2px;  
+    --border-width-large : 2px;  
 }
 
 :root {
     --box-shadow-none    : none;
-    --box-shadow-large   : 0px 12px 24px 0px rgba(0,0,0,0.4);
-    --box-shadow-medium  : 0px 8px  16px 0px rgba(0,0,0,0.4);
     --box-shadow-small   : 0px 4px  8px  0px rgba(0,0,0,0.4);
+    --box-shadow-medium  : 0px 8px  16px 0px rgba(0,0,0,0.4);
+    --box-shadow-large   : 0px 12px 24px 0px rgba(0,0,0,0.4);
 }
 
 :root {
@@ -132,6 +132,7 @@ Date+Time of change   By     Description
     --font-size-xs       : 0.75em;
     --font-size-small    : 0.85em;
     --font-size-medium   : 1.0em;
+    --font-size-larger   : 1.20em;
     --font-size-large    : 1.5em;
     --font-size-xl       : 2.0em;
     
@@ -170,6 +171,7 @@ Date+Time of change   By     Description
     --z-dialog-tool      : 23095; /* Dialog tool */
     --z-e-tool           : 24000; /* E console view */
     --z-e-control        : 24005; /* Toggle control for E console view */
+    --z-alert-stop       : 24999; /* Black screen of Death */
 }
 
 

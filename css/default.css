@@ -309,6 +309,7 @@ Column layout, top aligned
  * AUTOFILL
  *
  */
+/* 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -319,6 +320,7 @@ input:-webkit-autofill:active {
     transition:background-color 0s ease-in-out 0s;
     box-shadow:inset 0 0 0 0 inherit;
 }
+*/
 
 /*
  * CURSOR

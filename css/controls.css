@@ -48,7 +48,7 @@ html, body {
 
 .monospace { font-family:monospace; font-size:1.0em; }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .show-s         { display: block; }
     .hide-s         { display: none;  }
 
@@ -66,7 +66,7 @@ html, body {
     .overflow-y-s   { overflow-y:auto; }
 }
 
-@media screen and (min-width:769px) {
+@media screen and (min-width:768px) {
     .show-l         { display: block; }
     .hide-l         { display: none;  }
     
@@ -134,6 +134,12 @@ html, body {
 /* ************************************************************************ */
 /* ************************************************************************ */
 
+span.span-ripple {
+    color:var(--color-primary-strong);
+    text-decoration:underline; 
+    cursor:pointer; 
+}
+
 span.ripple {
     position:absolute;
     border-radius:50%;
@@ -169,18 +175,7 @@ input[type="password"]
 /* ************************************************************************ */
 /* ************************************************************************ */
 
-.link     { cursor:pointer; }
-
-a:link    { color:var(--color-accent); text-decoration:none; cursor:pointer; }
-a:visited { color:var(--color-accent); text-decoration:none; cursor:pointer; }
-a:hover   { color:var(--color-accent); text-decoration:underline; cursor:pointer; }
-a:active  { color:var(--color-accent); text-decoration:underline; cursor:pointer; }
-
-span.ripple { 
-    color:var(--color-accent);
-    text-decoration:underline; 
-    cursor:pointer; 
-}
+.link { cursor:pointer; }
 
 tr.link {
     color:var(--color-accent); text-decoration:none; cursor:pointer;
@@ -199,39 +194,45 @@ div.button {
     cursor:pointer;
 }
 
+div.button.link {
+    background: transparent !important;
+    color:var(--color-accent); text-decoration:none;
+    border:0; 
+}
+
 div.button.primary { 
     background-color:var(--color-accent); 
-    color:var(color-primary-inverse); 
+    color:var(--color-primary-inverse); 
     border:0; 
 }
 
 div.button.secondary {
     background-color:var(--color-surface-inverse);
-    color:var(color-primary-inverse);
+    color:var(--color-primary-inverse);
     border:0;
 }
 
 div.button.success {
     background-color:var(--color-success);
-    color:var(color-callout-primary);
+    color:--var(color-callout-primary);
     border:0;
 }
 
 div.button.warning {
     background-color:var(--color-warning);
-    color:var(color-callout-primary);
+    color:--var(color-callout-primary);
     border:0;
 }
 
 div.button.error {
     background-color:var(--color-error);
-    color:var(color-callout-primary);
+    color:--var(color-callout-primary);
     border:0;
 }
 
 div.button.info {
     background-color:var(--color-info);
-    color:var(color-callout-primary);
+    color:--var(color-callout-primary);
     border:0;
 }
 
@@ -239,7 +240,7 @@ div.button.info {
 /* ************************************************************************ */
 /* ************************************************************************ */
 /*                                                                          */
-/* TOASTS                                                            */
+/* TOASTS                                                                   */
 /*                                                                          */
 /* ************************************************************************ */
 /* ************************************************************************ */
@@ -316,14 +317,30 @@ div.button.info {
 /* ************************************************************************ */
 /* ************************************************************************ */
 /*                                                                          */
-/* OVERLAYS                                                            */
+/* OVERLAYS                                                                 */
 /*                                                                          */
 /* ************************************************************************ */
 /* ************************************************************************ */
 
-.overlay        { position:fixed; top:0; left:0; width:100%; height:100%; background:transparent; }
-.overlay-dimmed,
-.overlay.dimmed { background-color: rgba(0,0,0,0.5); }
+.auth_google_dialog {
+    position:absolute; background-color:var(--color-surface);
+}
+
+@media screen and (max-width:499px) {
+    .auth_google_dialog {
+        top:0; left:0; width:100%; height:100%;
+        border-radius:var(--radius-none);
+        box-shadow:var(--box-shadow-none);
+    }
+}
+
+@media screen and (min-width:500px) {
+    .auth_google_dialog {
+        top:15px; width:500px; height:calc(100% - 30px); margin: 0 auto;
+        border-radius:var(--radius-medium);
+        box-shadow:var(--box-shadow-none);
+    }
+}
 
 .menu {
     width:fit-content; max-width:100%; height:fit-content;
@@ -333,7 +350,7 @@ div.button.info {
 }
 
 .dialog { 
-    width:92%; max-width:480px; height:fit-content;
+    width:92%; max-width:480px; height:fit-content; max-height:92%;
     padding:1.25em 1.5em 1.0em 1.5em; 
     background-color: var(--color-surface); 
 }
@@ -344,10 +361,13 @@ div.button.info {
 
 .menu .menu-item {
     min-height: 2.0em; width: 100%;
+    display: flex; flex-direction: row; justify-content: flex-start; align-items: center;
+    padding: var(--space-medium) 0 0 0;
     color: var(--color-primary-strong);
 }
 
-.menu .menu-item.divider { 
+.menu .menu-item.divider {
+    padding-bottom:var(--space-medium);
     border-bottom: 1px solid var(--color-divider);
 }
 
@@ -362,6 +382,25 @@ div.button.info {
     text-transform :uppercase;
 }
 
+#pager {
+    position: absolute;
+    padding: 0;
+    background-color:var(--color-surface); color:var(--color-primary);
+}
+
+@media screen and (max-width: 767px) {
+    #pager {
+        top:0; left:0; height:100%; width:100%;
+        border-left:0;
+    }  
+}
+
+@media screen and (min-width: 768px) {
+    #pager {
+        top:0; right:0; height:100%; width:400px;
+        border-left:1px solid var(--color-border);
+    }
+}
 
 /* ************************************************************************ */
 /* ************************************************************************ */
