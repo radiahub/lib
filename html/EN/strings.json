@@ -1,0 +1,68 @@
+[
+    { "id": "loading",          "value": "Loading" },
+    { "id": "processing",       "value": "Processing" },
+
+    { "id": "cancel",           "value": "Cancel" },
+    { "id": "close",            "value": "Close" },
+    { "id": "apply",            "value": "Apply" },
+    { "id": "retry",            "value": "Retry" },
+    { "id": "attention",        "value": "Attention" },
+    { "id": "continue",         "value": "Continue" },
+    { "id": "abort",            "value": "Abort" },
+    { "id": "ignore",           "value": "Ignore" },
+    { "id": "ok",               "value": "OK" },
+    { "id": "yes",              "value": "Yes" },
+    { "id": "no",               "value": "No" },
+
+    { "id": "success",          "value": "Success" },
+    { "id": "info",             "value": "Info" },
+    { "id": "warning",          "value": "Warning" },
+    { "id": "error",            "value": "Error" },
+    { "id": "confirm",          "value": "Confirm" },
+    { "id": "confirmation",     "value": "Confirmation" },
+    { "id": "required",         "value": "Required" },
+
+    { "id": "no_connect_title", "value": "No connection" },
+    { "id": "no_connect_text",  "value": "Please check your Internet connection or connect to a WiFi network." },
+
+    { "id": "system_error",     "value": "System error" },
+    { "id": "incorrect_value",  "value": "Incorrect or missing value" },
+    { "id": "no_selection",     "value": "No option selected" },
+    { "id": "too_many_retry",   "value": "Too many retry" },
+    { "id": "no_store_data",    "value": "Your data could not be saved. Check your connection and try again."},
+    { "id": "no_phone_number",  "value": "The phone number is incorrect" },
+    { "id": "welcome",          "value": "Welcome" },
+
+    { "id": "press2xToExit",    "value": "Press Back button again to exit" },
+
+    { "id": "disabled",         "value": "The application has been disabled. The registered phone number is used on another device." },
+    { "id": "nopreview",        "value": "No preview available" },
+    { "id": "badfilesize",      "value": "Invalid file size" },
+
+    { "id": "no_upload",        "value": "At least one file could not be uploaded" },
+    { "id": "no_change_saved",  "value": "Some changes could not be saved" },
+    { "id": "notification",     "value": "You have [no_of_messages] pending message(s)" },
+
+    { "id": "monday",           "value": "Monday"    },
+    { "id": "tuesday",          "value": "Tuesday"   },
+    { "id": "wednesday",        "value": "Wednesday" },
+    { "id": "thursday",         "value": "Thursday"  },
+    { "id": "friday",           "value": "Friday"    },
+    { "id": "saturday",         "value": "Saturday"  },
+    { "id": "sunday",           "value": "Sunday"    },
+
+    { "id": "day",              "value": "Day"    },
+    { "id": "hour",             "value": "Hour"   },
+    { "id": "minute",           "value": "Minute" },
+    { "id": "second",           "value": "Second" },
+    { "id": "days",             "value": "Days"    },
+    { "id": "hours",            "value": "Hours"   },
+    { "id": "minutes",          "value": "Minutes" },
+    { "id": "seconds",          "value": "Seconds" },
+
+    { "id": "message_sent",     "value": "Your message has been sent" },
+    { "id": "scan_code_prompt", "value": "Place the code inside the scan area" },
+
+    { "id": "rq_notification_1","value": "Notifications" },
+    { "id": "rq_notification_2","value": "Please allow [appname] to receive notifications" }
+]
